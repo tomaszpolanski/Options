@@ -1,4 +1,4 @@
-package polanski.jutils.option;
+package polanski.option;
 
 import android.support.annotation.NonNull;
 

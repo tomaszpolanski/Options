@@ -1,4 +1,4 @@
-package polanski.jutils.option;
+package polanski.option;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,7 +45,7 @@ public final class Some<T> extends Option<T> {
     @NonNull
     @Override
     public <OUT> Option<OUT> map(@NonNull final Func1<T, OUT> f) {
-        return Option.ofObj(f.call(mValue));
+        return ofObj(f.call(mValue));
     }
 
     @NonNull
@@ -83,7 +83,7 @@ public final class Some<T> extends Option<T> {
     @Override
     public <OUT> Option<OUT> ofType(@NonNull final Class<OUT> type) {
         //noinspection unchecked
-        return type.isInstance(mValue) ? Option.ofObj(type.cast(mValue)) : Option.NONE;
+        return type.isInstance(mValue) ? ofObj(type.cast(mValue)) : NONE;
     }
 
     @NonNull
@@ -95,9 +95,9 @@ public final class Some<T> extends Option<T> {
 
     @NonNull
     @Override
-    public polanski.jutils.Unit matchAction(@NonNull final Action1<T> fSome,
+    public polanski.option.Unit matchAction(@NonNull final Action1<T> fSome,
                                             @NonNull final Action0 fNone) {
-        return polanski.jutils.Unit.from(new Action0() {
+        return polanski.option.Unit.from(new Action0() {
             @Override
             public void call() {
                 fSome.call(mValue);
@@ -158,14 +158,14 @@ public final class Some<T> extends Option<T> {
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
     public boolean equals(final Object o) {
-        return Option.ofObj(o)
+        return ofObj(o)
                      .ofType(Some.class)
                      .filter(new Func1<Some, Boolean>() {
                          @Override
                          public Boolean call(final Some some) {
                              return some.getUnsafe().equals(mValue);
                          }
-                     }) != Option.NONE;
+                     }) != NONE;
     }
 
     @Override

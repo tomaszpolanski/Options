@@ -1,4 +1,4 @@
-package polanski.jutils.option;
+package polanski.option;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -90,8 +90,8 @@ public final class None<T> extends Option<T> {
 
     @NonNull
     @Override
-    public polanski.jutils.Unit matchAction(@NonNull Action1<T> fSome, @NonNull Action0 fNone) {
-        return polanski.jutils.Unit.from(fNone);
+    public polanski.option.Unit matchAction(@NonNull Action1<T> fSome, @NonNull Action0 fNone) {
+        return polanski.option.Unit.from(fNone);
     }
 
     @Nullable

@@ -1,8 +1,7 @@
-package polanski.jutils;
+package polanski.option;
 
 import org.junit.Test;
 
-import polanski.jutils.option.Option;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func0;
@@ -19,10 +18,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static polanski.jutils.option.Option.NONE;
-import static polanski.jutils.option.Option.ofObj;
-import static polanski.jutils.option.Option.tryAsOption;
-import static polanski.jutils.option.OptionUnsafe.getUnsafe;
+import static polanski.option.Option.NONE;
+import static polanski.option.Option.ofObj;
+import static polanski.option.Option.tryAsOption;
+import static polanski.option.OptionUnsafe.getUnsafe;
 
 public class TestOption {
 
@@ -270,12 +269,12 @@ public class TestOption {
                                       someFun.fun();
                                   }
                               },
-                              new Action0() {
-                                  @Override
-                                  public void call() {
-                                      noneFun.fun();
-                                  }
-                              });
+                new Action0() {
+                    @Override
+                    public void call() {
+                        noneFun.fun();
+                    }
+                });
 
         verify(someFun).fun();
         verify(noneFun, never()).fun();
@@ -293,12 +292,12 @@ public class TestOption {
                                  someFun.fun();
                              }
                          },
-                         new Action0() {
-                             @Override
-                             public void call() {
-                                 noneFun.fun();
-                             }
-                         });
+                new Action0() {
+                    @Override
+                    public void call() {
+                        noneFun.fun();
+                    }
+                });
 
         verify(someFun, never()).fun();
         verify(noneFun).fun();
@@ -408,12 +407,12 @@ public class TestOption {
                                                       return some;
                                                   }
                                               },
-                                              new Func0<String>() {
-                                                  @Override
-                                                  public String call() {
-                                                      return none;
-                                                  }
-                                              });
+                new Func0<String>() {
+                    @Override
+                    public String call() {
+                        return none;
+                    }
+                });
 
         assertEquals(some, result);
     }
@@ -430,12 +429,12 @@ public class TestOption {
                                                         return some;
                                                     }
                                                 },
-                                                new Func0<String>() {
-                                                    @Override
-                                                    public String call() {
-                                                        return none;
-                                                    }
-                                                });
+                new Func0<String>() {
+                    @Override
+                    public String call() {
+                        return none;
+                    }
+                });
 
         assertEquals(none, result);
     }
@@ -451,12 +450,12 @@ public class TestOption {
                                                             return some;
                                                         }
                                                     },
-                                                    new Func0<String>() {
-                                                        @Override
-                                                        public String call() {
-                                                            return none;
-                                                        }
-                                                    });
+                new Func0<String>() {
+                    @Override
+                    public String call() {
+                        return none;
+                    }
+                });
 
         assertEquals(some, result);
     }
@@ -473,12 +472,12 @@ public class TestOption {
                                                               return some;
                                                           }
                                                       },
-                                                      new Func0<String>() {
-                                                          @Override
-                                                          public String call() {
-                                                              return none;
-                                                          }
-                                                      });
+                new Func0<String>() {
+                    @Override
+                    public String call() {
+                        return none;
+                    }
+                });
 
         assertEquals(none, result);
     }
@@ -631,7 +630,7 @@ public class TestOption {
 
         assertTrue(op.isSome());
         assertEquals(fun.call(one, two, three, four),
-                     getUnsafe(op));
+                getUnsafe(op));
     }
 
     @Test
@@ -711,7 +710,7 @@ public class TestOption {
     public void testOrThrowUnsafe_whenSome() {
         final int value = 1;
 
-        final int result = polanski.jutils.option.OptionUnsafe
+        final int result = OptionUnsafe
                 .orThrowUnsafe(ofObj(value), new RuntimeException());
 
         assertEquals(value, result);
@@ -719,7 +718,7 @@ public class TestOption {
 
     @Test(expected = RuntimeException.class)
     public void testOrThrowUnsafe_whenNone() {
-        polanski.jutils.option.OptionUnsafe
+        OptionUnsafe
                 .orThrowUnsafe(NONE, new RuntimeException());
     }
 

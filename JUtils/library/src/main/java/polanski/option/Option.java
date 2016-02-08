@@ -1,9 +1,8 @@
-package polanski.jutils.option;
+package polanski.option;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import polanski.jutils.Unit;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func0;

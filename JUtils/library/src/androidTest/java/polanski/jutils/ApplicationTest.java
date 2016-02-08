@@ -1,4 +1,4 @@
-package polanski.jutils;
+package polanski.option;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
