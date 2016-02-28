@@ -19,7 +19,8 @@ If the inventor of null pointers and references has condemned them,  why the res
 ###Where to use them?
 
 Currently there are several ways to say that an object could be null.  Most popular way in Android nowadays is using Nullable or NonNull annotations. 
-The problem with those annotations is that you cannot say what kind of objects are in an array,  or if you use Rx,  in an observable.  
+The problem with those annotations is that you cannot say what kind of objects are in an array,  or if you use Rx,  in an observable.
+With Options you can instead ```List<Option<String>>``` of in Rx ```Observable<Option<Integer>>```.
 
 ###How to use them?
 
