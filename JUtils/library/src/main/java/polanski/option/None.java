@@ -16,7 +16,6 @@ import rx.functions.Func4;
  *
  * @param <T> Type of missing value
  */
-@SuppressWarnings("unchecked")
 public final class None<T> extends Option<T> {
 
     None() {
@@ -42,19 +41,19 @@ public final class None<T> extends Option<T> {
     @NonNull
     @Override
     public <OUT> Option<OUT> map(@NonNull final Func1<T, OUT> f) {
-        return NONE;
+        return none();
     }
 
     @NonNull
     @Override
     public <OUT> Option<OUT> flatMap(@NonNull final Func1<T, Option<OUT>> f) {
-        return NONE;
+        return none();
     }
 
     @NonNull
     @Override
     public Option<T> filter(@NonNull final Func1<T, Boolean> predicate) {
-        return NONE;
+        return none();
     }
 
     @NonNull
@@ -78,7 +77,7 @@ public final class None<T> extends Option<T> {
     @NonNull
     @Override
     public <OUT> Option<OUT> ofType(@NonNull Class<OUT> type) {
-        return NONE;
+        return none();
     }
 
     @NonNull
@@ -104,7 +103,7 @@ public final class None<T> extends Option<T> {
     @Override
     public <IN, OUT> Option<OUT> lift(@NonNull final Option<IN> optionB,
                                       @NonNull final Func2<T, IN, OUT> f) {
-        return NONE;
+        return none();
     }
 
     @NonNull
@@ -112,7 +111,7 @@ public final class None<T> extends Option<T> {
     public <IN1, IN2, OUT> Option<OUT> lift(@NonNull Option<IN1> option1,
                                             @NonNull Option<IN2> option2,
                                             @NonNull Func3<T, IN1, IN2, OUT> f) {
-        return NONE;
+        return none();
     }
 
     @NonNull
@@ -121,7 +120,7 @@ public final class None<T> extends Option<T> {
                                                  @NonNull Option<IN2> option2,
                                                  @NonNull Option<IN3> option3,
                                                  @NonNull Func4<T, IN1, IN2, IN3, OUT> f) {
-        return NONE;
+        return none();
     }
 
     @Override

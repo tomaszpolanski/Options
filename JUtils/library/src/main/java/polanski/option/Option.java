@@ -146,8 +146,7 @@ public abstract class Option<T> {
         try {
             return Option.ofObj(f.call());
         } catch (Exception e) {
-            //noinspection unchecked
-            return NONE;
+            return none();
         }
     }
 
