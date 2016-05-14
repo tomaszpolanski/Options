@@ -805,6 +805,23 @@ public class TestOption {
         });
     }
 
+    @Test
+    public void testNone_returnsNONE() {
+        assertEquals(Option.NONE, Option.none());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testGetUnsafe_none() {
+        Option.NONE.getUnsafe();
+    }
+
+    @Test
+    public void testGetUnsafe_some() {
+        Integer value = 1;
+
+        assertEquals(value, ofObj(value).getUnsafe());
+    }
+
     interface IFunction {
 
         void fun();
