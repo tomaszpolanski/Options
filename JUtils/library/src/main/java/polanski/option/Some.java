@@ -11,6 +11,8 @@ import rx.functions.Func2;
 import rx.functions.Func3;
 import rx.functions.Func4;
 
+import static polanski.option.Unit.*;
+
 /**
  * Represent option of existing value.
  *
@@ -57,8 +59,7 @@ public final class Some<T> extends Option<T> {
     @NonNull
     @Override
     public Option<T> filter(@NonNull final Func1<T, Boolean> predicate) {
-        //noinspection unchecked
-        return predicate.call(mValue) ? this : NONE;
+        return predicate.call(mValue) ? this : Option.<T>none();
     }
 
     @NonNull
@@ -82,8 +83,7 @@ public final class Some<T> extends Option<T> {
     @NonNull
     @Override
     public <OUT> Option<OUT> ofType(@NonNull final Class<OUT> type) {
-        //noinspection unchecked
-        return type.isInstance(mValue) ? ofObj(type.cast(mValue)) : NONE;
+        return type.isInstance(mValue) ? ofObj(type.cast(mValue)) : Option.<OUT>none();
     }
 
     @NonNull
@@ -97,7 +97,7 @@ public final class Some<T> extends Option<T> {
     @Override
     public polanski.option.Unit matchAction(@NonNull final Action1<T> fSome,
                                             @NonNull final Action0 fNone) {
-        return polanski.option.Unit.from(new Action0() {
+        return from(new Action0() {
             @Override
             public void call() {
                 fSome.call(mValue);
@@ -159,13 +159,13 @@ public final class Some<T> extends Option<T> {
     @Override
     public boolean equals(final Object o) {
         return ofObj(o)
-                     .ofType(Some.class)
-                     .filter(new Func1<Some, Boolean>() {
-                         @Override
-                         public Boolean call(final Some some) {
-                             return some.getUnsafe().equals(mValue);
-                         }
-                     }) != NONE;
+                .ofType(Some.class)
+                .filter(new Func1<Some, Boolean>() {
+                    @Override
+                    public Boolean call(final Some some) {
+                        return some.getUnsafe().equals(mValue);
+                    }
+                }) != NONE;
     }
 
     @Override
