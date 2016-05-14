@@ -6,7 +6,8 @@
 /JUtils/library/build/
 /JUtils/library/build/*
 /captures
-.*
 /JUtils/local.properties
 /JUtils/build/generated
 *.iml
+/JUtils/.idea
+/JUtils/build/*
