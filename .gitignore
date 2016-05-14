@@ -9,3 +9,4 @@
 .*
 /JUtils/local.properties
 /JUtils/build/generated
+*.iml

@@ -26,6 +26,15 @@ public abstract class Option<T> {
     public static final None NONE = new None();
 
     /**
+     * Returns of non existing value without getting unchecked warning
+     */
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public static <T> Option<T> none() {
+        return NONE;
+    }
+
+    /**
      * Indicates if option contains value
      *
      * @return true if Option is Some, otherwise false
