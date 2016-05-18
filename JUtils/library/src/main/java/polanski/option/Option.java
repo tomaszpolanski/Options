@@ -3,13 +3,14 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.functions.Func0;
-import rx.functions.Func1;
-import rx.functions.Func2;
-import rx.functions.Func3;
-import rx.functions.Func4;
+import polanski.option.function.Action0;
+import polanski.option.function.Action1;
+import polanski.option.function.Func0;
+import polanski.option.function.Func1;
+import polanski.option.function.Func2;
+import polanski.option.function.Func3;
+import polanski.option.function.Func4;
+
 
 /**
  * Represent possibility of value not existing,
@@ -104,7 +105,7 @@ public abstract class Option<T> {
 
     /**
      * Forcefully tries to unwrap the inner value.
-     * <p>
+     * <p/>
      * Caution! Use this value only in special, justified cases!
      * Use @match instead.
      *
@@ -170,7 +171,7 @@ public abstract class Option<T> {
      */
     @NonNull
     public abstract Unit matchAction(@NonNull final Action1<T> fSome,
-                                                     @NonNull final Action0 fNone);
+                                     @NonNull final Action0 fNone);
 
     /**
      * Matches current optional to Some orResult None and returns appropriate value
@@ -254,8 +255,8 @@ public abstract class Option<T> {
     public Option<T> log(@NonNull String tag,
                          @NonNull final Action1<String> logging) {
         logging.call(tag.isEmpty()
-                             ? this.toString()
-                             : String.format("%s: %s", tag, this));
+                ? this.toString()
+                : String.format("%s: %s", tag, this));
         return this;
     }
 

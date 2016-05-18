@@ -2,7 +2,7 @@ package polanski.option;
 
 import org.junit.Test;
 
-import rx.functions.Action0;
+import polanski.option.function.Action0;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;

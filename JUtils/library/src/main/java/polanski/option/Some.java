@@ -3,15 +3,15 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.functions.Func0;
-import rx.functions.Func1;
-import rx.functions.Func2;
-import rx.functions.Func3;
-import rx.functions.Func4;
+import polanski.option.function.Action0;
+import polanski.option.function.Action1;
+import polanski.option.function.Func0;
+import polanski.option.function.Func1;
+import polanski.option.function.Func2;
+import polanski.option.function.Func3;
+import polanski.option.function.Func4;
 
-import static polanski.option.Unit.*;
+import static polanski.option.Unit.from;
 
 /**
  * Represent option of existing value.
