@@ -17,6 +17,7 @@ public final class OptionUnsafe {
      * Returns inner value of option if it is Some, otherwise will throw uncatchable exception
      *
      * @param option Option that will be unwrapped
+     * @param <T>    Wrapped type
      * @return Value of Some orResult if None, throws exception
      */
     @NonNull
@@ -29,8 +30,9 @@ public final class OptionUnsafe {
      *
      * Returns inner value of option if it is Some, otherwise will throw give RuntimeException
      *
-     * @param option Option that will be unwrapped
+     * @param option    Option that will be unwrapped
      * @param exception Exception to be thrown
+     * @param <T>       Wrapped type
      * @return Value of Some orResult if None, throws exception
      */
     @NonNull

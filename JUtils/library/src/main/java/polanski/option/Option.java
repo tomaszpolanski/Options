@@ -28,6 +28,9 @@ public abstract class Option<T> {
 
     /**
      * Returns of non existing value without getting unchecked warning
+     *
+     * @param <T> Type wrapped in {@link Option}
+     * @return NONE
      */
     @SuppressWarnings("unchecked")
     @NonNull
@@ -62,6 +65,7 @@ public abstract class Option<T> {
      * Converts inner value with @selector if value exists, otherwise does nothing
      *
      * @param selector Function that converts inner value
+     * @param <OUT>    Result type
      * @return If value exists, returns converted value otherwise does nothing
      */
     @NonNull
@@ -71,6 +75,7 @@ public abstract class Option<T> {
      * Binds option to another option
      *
      * @param selector Function that returns option to be bound to
+     * @param <OUT>    Result type
      * @return Bound option
      */
     @NonNull
@@ -119,7 +124,7 @@ public abstract class Option<T> {
      *
      * @param type  Class of the new object
      * @param <OUT> Type the value should be cast to
-     * @return Option of inner value cast to the @<OUT>, if not possible, then None
+     * @return Option of inner value cast to the OUT, if not possible, then None
      */
     @NonNull
     public abstract <OUT> Option<OUT> ofType(@NonNull final Class<OUT> type);
@@ -128,6 +133,7 @@ public abstract class Option<T> {
      * Option created from given @value
      *
      * @param value Value that should be wrapped in an Option
+     * @param <IN> Input type
      * @return Some of the @value if it is not null, otherwise None
      */
     @SuppressWarnings("unchecked")
@@ -139,7 +145,8 @@ public abstract class Option<T> {
     /**
      * Option of value returned by the function
      *
-     * @param f Function that returns a value, that function could throw an exception
+     * @param f     Function that returns a value, that function could throw an exception
+     * @param <OUT> Result type
      * @return Option of a value returned by @f, if @f threw an exception, then returns None
      */
     @NonNull
@@ -156,6 +163,7 @@ public abstract class Option<T> {
      *
      * @param fSome Function that will be called if value exists
      * @param fNone Function that will be called if value does not exist
+     * @param <OUT> Result type
      * @return Value returned by either @fSome of @fNone
      */
     @NonNull
@@ -178,6 +186,7 @@ public abstract class Option<T> {
      *
      * @param fSome Function that will be called if value exists
      * @param fNone Function that will be called if value does not exist
+     * @param <OUT> Result type
      * @return Value returned by either @fSome of @fNone
      */
     @Nullable
@@ -199,6 +208,8 @@ public abstract class Option<T> {
      *
      * @param option1 Option that should be combined with current option
      * @param f       Function that combines all inner values of the options into one value
+     * @param <IN1>   Input type
+     * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
     @NonNull
@@ -211,6 +222,9 @@ public abstract class Option<T> {
      * @param option1 Option that should be combined with current option
      * @param option2 Option that should be combined with current option
      * @param f       Function that combines all inner values of the options into one value
+     * @param <IN1>   Input type
+     * @param <IN2>   Input type
+     * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
     @NonNull
@@ -225,6 +239,10 @@ public abstract class Option<T> {
      * @param option2 Option that should be combined with current option
      * @param option3 Option that should be combined with current option
      * @param f       Function that combines all inner values of the options into one value
+     * @param <IN1>   Input type
+     * @param <IN2>   Input type
+     * @param <IN3>   Input type
+     * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
     @NonNull
