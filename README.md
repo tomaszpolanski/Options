@@ -48,6 +48,27 @@ String result = Option.ofObj(firstString)
                       .ofDefault(() -> "Some of the Strings were invalid");
 ```
 
+###How to use them?
+
+JUtilities are available on maven. Just add to you gradle files:
+
+To your top level gradle.build file add repository:
+```
+repositories { 
+        jcenter()
+        maven { url "https://jitpack.io" }
+}
+```
+
+To your module level gradle.build add dependency: 
+```
+dependencies {
+    // other dependencies
+    compile 'com.github.tomaszpolanski:JUtilities:1.0'
+}
+```
+
+
 ##References
 
 This library was strongly inbluenced by [C# Functional Language Extensions](https://github.com/louthy/language-ext)
