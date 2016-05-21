@@ -10,3 +10,6 @@ android:
 
 script:
    - ./JUtils/gradlew build
+   
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
