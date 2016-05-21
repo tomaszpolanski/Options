@@ -12,7 +12,7 @@ Similar to Java 8 Optionals but mainly targeting Android and Java 7 here.
 
 ###Why to use them?
 
-In 1965,  Sir Tony Hoare introduced null reference.  Since then he apologised for that and called it “A Billion dollar mistake”. 
+In 1965,  Sir Tony Hoare introduced null reference.  Since then he apologised for that and called it [The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare). 
 If the inventor of null pointers and references has condemned them,  why the rest of us should be using them?
 
 
@@ -23,6 +23,8 @@ The problem with those annotations is that you cannot say what kind of objects a
 With Options you can instead ```List<Option<String>>``` of in Rx ```Observable<Option<Integer>>```.
 
 ###How to use them?
+If you have been using RxJava, this API will look really similar to RxJava.
+Still Option is synchronous API that does not have to much to do with Reactive Programming.
 
 Basic pattern matching:
 ``` Java
@@ -71,4 +73,4 @@ dependencies {
 
 ##References
 
-This library was strongly inbluenced by [C# Functional Language Extensions](https://github.com/louthy/language-ext)
+This library was strongly influenced by [C# Functional Language Extensions](https://github.com/louthy/language-ext).
