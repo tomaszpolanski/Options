@@ -38,7 +38,7 @@ Operating on Option:
 String result = Option.ofObj("This string might have been null")
                       .filter(str -> str.contains("null"))
                       .map(str -> "This String contains word null: " + str)
-                      .ofDefault(() -> "Did not find matching world in the String");
+                      .ofDefault(() -> "Did not find matching word in the String");
 ```
 
 Using flatMap:
@@ -52,7 +52,7 @@ String result = Option.ofObj(firstString)
 
 ###How to use them?
 
-JUtilities are available on maven. Just add to you gradle files:
+JUtilities are available on maven. Just add to your gradle files:
 
 To your top level gradle.build file add repository:
 ```
