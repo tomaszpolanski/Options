@@ -1,5 +1,5 @@
 
-# JUtilities
+# JUtilities[![Build Status](https://travis-ci.org/tomaszpolanski/JUtilities.svg?branch=master)](https://travis-ci.org/tomaszpolanski/JUtilities)
 
 
 Functional utilities for Java Android projects
