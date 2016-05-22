@@ -24,7 +24,7 @@ With Options you can instead ```List<Option<String>>``` of in Rx ```Observable<O
 
 ###How to use them?
 If you have been using RxJava, this API will look really similar to RxJava.
-Still Option is synchronous API that does not have to much to do with Reactive Programming.
+Still Option is synchronous API that does not have too much to do with Reactive Programming.
 
 Basic pattern matching:
 ``` Java
