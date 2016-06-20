@@ -3,11 +3,11 @@
 /.idea/*
 .DS_Store
 /build
-/JUtils/library/build/
-/JUtils/library/build/*
+/options/core/build/
 /captures
-/JUtils/local.properties
-/JUtils/build/generated
+/options/local.properties
 *.iml
-/JUtils/.idea
-/JUtils/build/*
+/options/.idea
+/options/build/*
+/options/core/build/*
+/options/build/generated
