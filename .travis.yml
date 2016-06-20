@@ -9,7 +9,7 @@ android:
     - extra
 
 script:
-   - ./JUtils/gradlew build
+   - ./options/gradlew build
    
 after_success:
   - bash <(curl -s https://codecov.io/bash)
