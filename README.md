@@ -1,10 +1,8 @@
 
-# JUtilities [![Build Status](https://travis-ci.org/tomaszpolanski/JUtilities.svg?branch=master)](https://travis-ci.org/tomaszpolanski/JUtilities)
+# Options [![Build Status](https://travis-ci.org/tomaszpolanski/JUtilities.svg?branch=master)](https://travis-ci.org/tomaszpolanski/JUtilities)
 
 
-Functional utilities for Java Android projects
-
-Currently containing Option that can be used with Java 1.7.
+Functional Option that can be used with Java 1.7 and Android.
 
 ##Option
 
