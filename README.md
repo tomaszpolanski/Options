@@ -1,5 +1,5 @@
 
-# Options [![Build Status](https://travis-ci.org/tomaszpolanski/JUtilities.svg?branch=master)](https://travis-ci.org/tomaszpolanski/JUtilities)
+# Options [![Build Status](https://travis-ci.org/tomaszpolanski/Options.svg?branch=master)](https://travis-ci.org/tomaszpolanski/Options)
 
 
 Functional Option that can be used with Java 1.7 and Android.
