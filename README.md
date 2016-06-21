@@ -50,7 +50,7 @@ String result = Option.ofObj(firstString)
 
 ###How to use them?
 
-JUtilities are available on maven. Just add to your gradle files:
+Options are available on maven. Just add to your gradle files:
 
 To your top level gradle.build file add repository:
 ```
@@ -64,15 +64,9 @@ To your module level gradle.build add dependency:
 ```
 dependencies {
     // other dependencies
-    compile 'com.github.tomaszpolanski:Options:1.0'
+    compile 'com.github.tomaszpolanski:options:1.1'
 }
 ```
-
-##Coming soon to the release
-
-- using Kotlin, but only in unit tests not to increase method count
-- maven library rename
-- improved support for interop for Kotlin
 
 ##References
 
