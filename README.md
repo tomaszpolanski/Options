@@ -68,6 +68,8 @@ dependencies {
 }
 ```
 
+Current method count (in version 1.1) is 132 altogether.
+
 ##References
 
 This library was strongly influenced by [C# Functional Language Extensions](https://github.com/louthy/language-ext).
