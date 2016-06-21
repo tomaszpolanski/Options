@@ -68,6 +68,11 @@ dependencies {
 }
 ```
 
+##Coming soon to the release
+
+- using Kotlin, but only in unit tests not to increase method count
+- maven library rename
+- improved support for interop for Kotlin
 
 ##References
 
