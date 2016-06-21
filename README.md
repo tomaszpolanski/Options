@@ -64,7 +64,7 @@ To your module level gradle.build add dependency:
 ```
 dependencies {
     // other dependencies
-    compile 'com.github.tomaszpolanski:JUtilities:1.0'
+    compile 'com.github.tomaszpolanski:Options:1.0'
 }
 ```
 
