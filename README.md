@@ -50,7 +50,7 @@ String result = Option.ofObj(firstString)
 
 ###How to use them?
 
-Options are available on maven. Just add to your gradle files:
+Options are available on maven via [jitpack](https://jitpack.io/#tomaszpolanski/options/). Just add to your gradle files:
 
 To your top level gradle.build file add repository:
 ```
