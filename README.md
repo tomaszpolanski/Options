@@ -64,11 +64,11 @@ To your module level gradle.build add dependency:
 ```
 dependencies {
     // other dependencies
-    compile 'com.github.tomaszpolanski:options:1.1'
+    compile 'com.github.tomaszpolanski:options:1.1.1'
 }
 ```
 
-Current method count (in version 1.1) is 132 altogether.
+Current method count (in version 1.1.1) is 139 altogether.
 
 ##References
 
