@@ -1,7 +1,7 @@
 
 # Options 
 [![Build Status](https://travis-ci.org/tomaszpolanski/Options.svg?branch=master)](https://travis-ci.org/tomaszpolanski/Options)
-[![Method count](https://img.shields.io/badge/Methods count-core: 119 | deps: 20-e91e63.svg)](http://www.methodscount.com/?lib=com.github.tomaszpolanski%3Aoptions%3A1.1.1)
+[![Method count](https://img.shields.io/badge/Methods and size-core: 119 | deps: 20 | 15 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.tomaszpolanski%3Aoptions%3A1.1.1)
 
 Functional Option that can be used with Java 1.7 and Android.
 
