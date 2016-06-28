@@ -1,6 +1,7 @@
 
-# Options [![Build Status](https://travis-ci.org/tomaszpolanski/Options.svg?branch=master)](https://travis-ci.org/tomaszpolanski/Options)
-
+# Options 
+[![Build Status](https://travis-ci.org/tomaszpolanski/Options.svg?branch=master)](https://travis-ci.org/tomaszpolanski/Options)
+[![Method count](https://img.shields.io/badge/Methods count-core: 119 | deps: 20-e91e63.svg)](http://www.methodscount.com/?lib=com.github.tomaszpolanski%3Aoptions%3A1.1.1)
 
 Functional Option that can be used with Java 1.7 and Android.
 
@@ -67,8 +68,6 @@ dependencies {
     compile 'com.github.tomaszpolanski:options:1.1.1'
 }
 ```
-
-Current method count (in version 1.1.1) is 139 altogether.
 
 ##References
 
