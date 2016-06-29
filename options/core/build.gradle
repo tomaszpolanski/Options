@@ -1,7 +1,5 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'maven'
-apply plugin: 'kotlin-android'
+apply plugin: 'java'
+apply plugin: 'kotlin'
 
 group = 'com.github.tomaszpolanski'
 
@@ -14,33 +12,17 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.1-2"
     }
 }
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
 
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 5
-        versionName "1.1.1"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-    sourceSets {
-        test.java.srcDirs += 'src/test/kotlin'
-    }
+version = '1.2.0'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+sourceSets {
+    test.java.srcDirs += 'src/test/kotlin'
 }
 
 afterEvaluate {
-    android.sourceSets.all { sourceSet ->
+    sourceSets.all { sourceSet ->
         if (!sourceSet.name.startsWith("test"))
         {
             sourceSet.kotlin.setSrcDirs([])
@@ -60,15 +42,8 @@ dependencies {
 
 // build a jar with source files
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
+    from sourceSets.main.java.srcDirs
     classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
 }
 
 // build a jar with javadoc
