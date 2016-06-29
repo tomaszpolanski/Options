@@ -50,6 +50,7 @@ String result = Option.ofObj(firstString)
 ```
 
 ###How to use them?
+[![](https://jitpack.io/v/tomaszpolanski/options.svg)](https://jitpack.io/#tomaszpolanski/options)
 
 Options are available on maven via [jitpack](https://jitpack.io/#tomaszpolanski/options/). Just add to your gradle files:
 
