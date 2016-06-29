@@ -16,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'c:/Users/tomas_000/AppData/Local/Android/sdk/extras/android/m2repository' }
     }
 }
 
