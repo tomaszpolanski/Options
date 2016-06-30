@@ -391,9 +391,12 @@ class TestOption {
             it.filterIsInstance<Int>()
                     .sum()
         }
+        val first = 1
+        val rest = 1..4
         val op = ofObj(first).lift(rest.map { ofObj(it) }, funN)
 
         assertThat(op.isSome).isTrue()
+        assertEquals(rest.sum() + first, getUnsafe(op))
     }
 
     @Test

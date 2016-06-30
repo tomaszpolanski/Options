@@ -264,6 +264,7 @@ public abstract class Option<T> {
      */
     @NonNull
     public abstract <IN, OUT> Option<OUT> lift(
+            @NonNull final List<? extends Option<IN>> options,
             @NonNull final FuncN<? extends OUT> f);
 
     /**
