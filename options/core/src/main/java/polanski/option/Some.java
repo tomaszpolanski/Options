@@ -3,6 +3,8 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import polanski.option.function.Action0;
 import polanski.option.function.Action1;
 import polanski.option.function.Func0;
@@ -10,6 +12,7 @@ import polanski.option.function.Func1;
 import polanski.option.function.Func2;
 import polanski.option.function.Func3;
 import polanski.option.function.Func4;
+import polanski.option.function.FuncN;
 
 import static polanski.option.Unit.from;
 
@@ -150,6 +153,50 @@ public final class Some<T> extends Option<T> {
         });
     }
 
+    @NonNull
+    @Override
+    public <IN, OUT> Option<OUT> lift(@NonNull final List<? extends Option<IN>> options,
+                                      @NonNull final FuncN<? extends OUT> f) {
+
+        return options.size() == 1
+                ? first(options).map(new Func1<IN, OUT>() {
+            @Override
+            public OUT call(final IN it) {
+                return f.call(it, mValue);
+            }
+        })
+                : first(options).lift(tail(options), new FuncN<OUT>() {
+                    @Override
+                    public OUT call(final Object... list) {
+                        return f.call(combine(mValue, list));
+                    }
+                });
+    }
+
+    @NonNull
+    private static <T> T first(@NonNull final List<? extends T> options) {
+        return options.get(0);
+    }
+
+    @NonNull
+    private static <T> List<? extends T> tail(@NonNull final List<? extends T> options) {
+        return options.subList(1, options.size());
+    }
+
+    @NonNull
+    private static Object[] combine(@NonNull final Object[] a, @NonNull final Object[] b) {
+        final int length = a.length + b.length;
+        Object[] result = new Object[length];
+        System.arraycopy(a, 0, result, 0, a.length);
+        System.arraycopy(b, 0, result, a.length, b.length);
+        return result;
+    }
+
+    @NonNull
+    private static Object[] combine(@NonNull final Object a, @NonNull final Object[] b) {
+        return combine(new Object[]{a}, b);
+    }
+
     @Override
     public int hashCode() {
         return mValue.hashCode();
@@ -159,13 +206,13 @@ public final class Some<T> extends Option<T> {
     @Override
     public boolean equals(final Object o) {
         return ofObj(o)
-                .ofType(Some.class)
-                .filter(new Func1<Some, Boolean>() {
-                    @Override
-                    public Boolean call(final Some some) {
-                        return some.getUnsafe().equals(mValue);
-                    }
-                }) != NONE;
+                       .ofType(Some.class)
+                       .filter(new Func1<Some, Boolean>() {
+                           @Override
+                           public Boolean call(final Some some) {
+                               return some.getUnsafe().equals(mValue);
+                           }
+                       }) != NONE;
     }
 
     @Override

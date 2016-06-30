@@ -372,6 +372,31 @@ class TestOption {
     }
 
     @Test
+    fun testLiftMany_whenFirstIsNone_returnNone() {
+        val op = none<Int>().lift(1.rangeTo(4).map { ofObj(it) }, { it })
+
+        assertThat(op.isSome).isFalse()
+    }
+
+    @Test
+    fun testLiftMany_whenAnyIsNone_returnNone() {
+        val op = ofObj(1).lift(2.rangeTo(4).map { ofObj(it) }.plus(none()), { it })
+
+        assertThat(op.isSome).isFalse()
+    }
+
+    @Test
+    fun testLiftMany_whenAllAreSome_returnSome() {
+        val funN = polanski.option.function.FuncN<Int> {
+            it.filterIsInstance<Int>()
+                    .sum()
+        }
+        val op = ofObj(first).lift(rest.map { ofObj(it) }, funN)
+
+        assertThat(op.isSome).isTrue()
+    }
+
+    @Test
     fun testToString_whenSome() {
         val value = 1
 
