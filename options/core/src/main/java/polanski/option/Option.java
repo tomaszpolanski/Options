@@ -264,8 +264,8 @@ public abstract class Option<T> {
      */
     @NonNull
     public abstract <IN, OUT> Option<OUT> lift(
-            @NonNull final List<? extends Option<IN>> options,
-            @NonNull final FuncN<? extends OUT> f);
+            @NonNull final List<Option<IN>> options,
+            @NonNull final FuncN<OUT> f);
 
     /**
      * Logs the value of the Option via given logging function.

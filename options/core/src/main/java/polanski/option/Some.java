@@ -155,8 +155,8 @@ public final class Some<T> extends Option<T> {
 
     @NonNull
     @Override
-    public <IN, OUT> Option<OUT> lift(@NonNull final List<? extends Option<IN>> options,
-                                      @NonNull final FuncN<? extends OUT> f) {
+    public <IN, OUT> Option<OUT> lift(@NonNull final List<Option<IN>> options,
+                                      @NonNull final FuncN<OUT> f) {
 
         return options.size() == 1
                 ? first(options).map(new Func1<IN, OUT>() {
@@ -174,12 +174,12 @@ public final class Some<T> extends Option<T> {
     }
 
     @NonNull
-    private static <T> T first(@NonNull final List<? extends T> options) {
+    private static <T> T first(@NonNull final List<T> options) {
         return options.get(0);
     }
 
     @NonNull
-    private static <T> List<? extends T> tail(@NonNull final List<? extends T> options) {
+    private static <T> List<T> tail(@NonNull final List<T> options) {
         return options.subList(1, options.size());
     }
 

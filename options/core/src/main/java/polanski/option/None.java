@@ -128,8 +128,8 @@ public final class None<T> extends Option<T> {
 
     @NonNull
     @Override
-    public <IN, OUT> Option<OUT> lift(@NonNull final List<? extends Option<IN>> options,
-                                      @NonNull final FuncN<? extends OUT> f) {
+    public <IN, OUT> Option<OUT> lift(@NonNull final List<Option<IN>> options,
+                                      @NonNull final FuncN<OUT> f) {
         return none();
     }
 
