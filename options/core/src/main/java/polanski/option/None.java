@@ -3,6 +3,8 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import polanski.option.function.Action0;
 import polanski.option.function.Action1;
 import polanski.option.function.Func0;
@@ -10,6 +12,7 @@ import polanski.option.function.Func1;
 import polanski.option.function.Func2;
 import polanski.option.function.Func3;
 import polanski.option.function.Func4;
+import polanski.option.function.FuncN;
 
 /**
  * Represent missing value
@@ -120,6 +123,13 @@ public final class None<T> extends Option<T> {
                                                  @NonNull Option<IN2> option2,
                                                  @NonNull Option<IN3> option3,
                                                  @NonNull Func4<T, IN1, IN2, IN3, OUT> f) {
+        return none();
+    }
+
+    @NonNull
+    @Override
+    public <IN, OUT> Option<OUT> lift(@NonNull final List<Option<IN>> options,
+                                      @NonNull final FuncN<OUT> f) {
         return none();
     }
 

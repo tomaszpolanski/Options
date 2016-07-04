@@ -3,6 +3,8 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import polanski.option.function.Action0;
 import polanski.option.function.Action1;
 import polanski.option.function.Func0;
@@ -10,7 +12,7 @@ import polanski.option.function.Func1;
 import polanski.option.function.Func2;
 import polanski.option.function.Func3;
 import polanski.option.function.Func4;
-
+import polanski.option.function.FuncN;
 
 /**
  * Represent possibility of value not existing,
@@ -133,7 +135,7 @@ public abstract class Option<T> {
      * Option created from given @value
      *
      * @param value Value that should be wrapped in an Option
-     * @param <IN> Input type
+     * @param <IN>  Input type
      * @return Some of the @value if it is not null, otherwise None
      */
     @SuppressWarnings("unchecked")
@@ -252,6 +254,20 @@ public abstract class Option<T> {
                                                           @NonNull final Func4<T, IN1, IN2, IN3, OUT> f);
 
     /**
+     * Combines given Options using @f.
+     *
+     * @param options Options that should be combined with current option
+     * @param f       Function that combines all inner values of the options into one value
+     * @param <IN>    Input type
+     * @param <OUT>   Result type
+     * @return Option of some if all the Options were Some, otherwise None
+     */
+    @NonNull
+    public abstract <IN, OUT> Option<OUT> lift(
+            @NonNull final List<Option<IN>> options,
+            @NonNull final FuncN<OUT> f);
+
+    /**
      * Logs the value of the Option via given logging function.
      *
      * @param logging Logging function
@@ -273,8 +289,8 @@ public abstract class Option<T> {
     public Option<T> log(@NonNull String tag,
                          @NonNull final Action1<String> logging) {
         logging.call(tag.isEmpty()
-                ? this.toString()
-                : String.format("%s: %s", tag, this));
+                             ? this.toString()
+                             : String.format("%s: %s", tag, this));
         return this;
     }
 
