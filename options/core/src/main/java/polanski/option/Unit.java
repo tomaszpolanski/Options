@@ -3,8 +3,7 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import polanski.option.function.Action0;
-
+import rx.functions.Action0;
 
 /**
  * Provides an implementation of a Unit Type.

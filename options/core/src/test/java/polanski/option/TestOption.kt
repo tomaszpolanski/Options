@@ -7,9 +7,11 @@ import org.mockito.Matchers.anyString
 import org.mockito.Mockito.*
 import polanski.option.Option.*
 import polanski.option.OptionUnsafe.getUnsafe
-import polanski.option.function.Func2
-import polanski.option.function.Func3
-import polanski.option.function.Func4
+import rx.functions.Func2
+import rx.functions.Func3
+import rx.functions.Func4
+import rx.functions.FuncN
+
 
 class TestOption {
 
@@ -387,7 +389,7 @@ class TestOption {
 
     @Test
     fun testLiftMany_whenAllAreSome_returnSome() {
-        val funN = polanski.option.function.FuncN<Int> {
+        val funN = FuncN<Int> {
             it.filterIsInstance<Int>()
                     .sum()
         }
