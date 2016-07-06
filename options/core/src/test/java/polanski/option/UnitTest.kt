@@ -5,7 +5,7 @@ import org.junit.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import polanski.option.Unit.*
-import polanski.option.function.Action0
+import rx.functions.Action0
 
 class UnitTest {
     @Test
