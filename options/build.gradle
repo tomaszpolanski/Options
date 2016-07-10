@@ -1,8 +1,17 @@
+def getLocalRepository() {
+    String androidHome = System.getenv().get("ANDROID_HOME")
+    if (androidHome == null) {
+        throw new StopActionException("System env does not contain ANDROID_HOME. " +
+                "Set it to point to your Android SDK.")
+    }
+    return androidHome + "/extras/android/m2repository"
+}
 
 allprojects {
     repositories {
         jcenter()
-        maven { url System.getenv().get("ANDROID_HOME") + "/extras/android/m2repository" }
+
+        maven { url getLocalRepository() }
     }
 }
 
