@@ -25,28 +25,59 @@ With Options you can instead ```List<Option<String>>``` of in Rx ```Observable<O
 If you have been using RxJava, this API will look really similar to RxJava.
 Still Option is synchronous API that does not have too much to do with Reactive Programming.
 
-Basic pattern matching:
+**Basic usage**
+
+Code with ``nulls``:
+
 ``` Java
-String result = Option.ofObj("This string might have been null")
+String input = ...;
+String result = null;
+
+if (input != null && input.isEmpty()) {
+    result = "Length of the string is " + input.length();
+} else {
+    result = "The string is null or empty";
+}
+```
+
+Code with ``Options``:
+
+``` Java
+String input = ...;
+
+String result = Option.ofObj(input)
+                      .filter(str -> str.length() > 0)
                       .match(str -> "Length of the string is " + str.length(),
-                             () -> "The string did not exist");
+                             ()  -> "The string is null or empty");
 ```
 
-Operating on Option:
+**Advance usage**
+
+Code with ``nulls``:
+
 ```Java
-String result = Option.ofObj("This string might have been null")
-                      .filter(str -> str.contains("null"))
-                      .map(str -> "This String contains word null: " + str)
-                      .ofDefault(() -> "Did not find matching word in the String");
+String input = ...;
+String result = null;
+
+if (input != null) {
+    try {
+        int intValue = Integer.parseInt(input);
+        result = "Input can be parsed to number: " + intValue;
+    } catch (NumberFormatException e) {
+        result = "Input is not a number";
+    }
+}
 ```
 
-Using flatMap:
+Code with ``Options``:
 
-```Java
-String result = Option.ofObj(firstString)
-                      .flatMap(first -> Option.ofObj(secondString)
-                                              .map(second -> String.format("Both Strings are valid: %s,  %s", first,  second))
-                      .ofDefault(() -> "Some of the Strings were invalid");
+``` Java
+String input = ...;
+
+String result = Option.ofObj(input)
+                      .flatMap(str -> Option.tryAsOption(() -> Integer.parseInt(str)))
+                      .map(intValue -> "Input can be parsed to number: " + intValue)
+                      .orDefault(() -> "Input is not a number");
 ```
 
 ###How to use them?
