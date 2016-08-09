@@ -33,7 +33,7 @@ Code with ``nulls``:
 String input = ...;
 String result = null;
 
-if (input != null && input.isEmpty()) {
+if (input != null && input.length() > 0) {
     result = "Length of the string is " + input.length();
 } else {
     result = "The string is null or empty";
