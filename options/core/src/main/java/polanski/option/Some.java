@@ -36,6 +36,11 @@ public final class Some<T> extends Option<T> {
     }
 
     @Override
+    public boolean isNone() {
+        return false;
+    }
+
+    @Override
     public Option<T> ifSome(@NonNull final Action1<T> action) {
         action.call(mValue);
         return this;

@@ -35,6 +35,34 @@ class TestOption {
     }
 
     @Test
+    fun testIsSome_whenSome() {
+        val op = ofObj("Something")
+
+        assertThat(op.isSome).isTrue()
+    }
+
+    @Test
+    fun testIsSome_whenNone() {
+        val op = none<String>()
+
+        assertThat(op.isSome).isFalse()
+    }
+
+    @Test
+    fun testIsNone_whenSome() {
+        val op = ofObj("Something")
+
+        assertThat(op.isNone).isFalse()
+    }
+
+    @Test
+    fun testIsNone_whenNone() {
+        val op = none<String>()
+
+        assertThat(op.isNone).isTrue()
+    }
+
+    @Test
     fun testMap_whenSome() {
         val str = "Something"
         val op = ofObj("").map { str }
