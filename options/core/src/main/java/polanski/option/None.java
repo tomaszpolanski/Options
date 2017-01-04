@@ -30,6 +30,11 @@ public final class None<T> extends Option<T> {
     }
 
     @Override
+    public boolean isNone() {
+        return true;
+    }
+
+    @Override
     public Option<T> ifSome(@NonNull final Action1<T> action) {
         // Do nothing
         return this;

@@ -48,6 +48,13 @@ public abstract class Option<T> {
     public abstract boolean isSome();
 
     /**
+     * Indicates if option does not contain a value
+     *
+     * @return true if Option is None, otherwise false
+     */
+    public abstract boolean isNone();
+
+    /**
      * Runs the action on Option value if exists, otherwise does nothing
      *
      * @param action Action that is called on the inner value
