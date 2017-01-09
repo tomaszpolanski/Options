@@ -43,7 +43,7 @@ public final class OptionAssertion<T> {
         }
 
         if (!actual.filter(v -> v.equals(expected)).isSome()) {
-            fail(String.format("Option value <%s> did not equal expected value: <%s>",
+            fail(String.format("Option value: <%s> did not equal expected value: <%s>",
                                OptionUnsafe.getUnsafe(actual),
                                expected));
         }
