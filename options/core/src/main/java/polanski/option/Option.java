@@ -301,5 +301,15 @@ public abstract class Option<T> {
         return this;
     }
 
+    /**
+     * Returns a set of assertions for testing.
+     *
+     * @return the assertions.
+     */
+    @NonNull
+    public OptionAssertion<T> test() {
+        return new OptionAssertion<>(this);
+    }
+
 }
 
