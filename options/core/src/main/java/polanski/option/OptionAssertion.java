@@ -9,7 +9,7 @@ public final class OptionAssertion<T> {
     @NonNull
     private final Option<T> actual;
 
-    public OptionAssertion(@NonNull final Option<T> actual) {
+    OptionAssertion(@NonNull final Option<T> actual) {
         this.actual = actual;
     }
 
