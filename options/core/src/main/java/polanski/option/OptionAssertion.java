@@ -52,12 +52,17 @@ public final class OptionAssertion<T> {
             fail("Option was not Some");
         }
 
-        if (!matches(actual, v -> v.equals(expected))) {
+        if (!matches(actual, equalsPredicate(expected))) {
             fail(String.format("Option value: <%s> did not equal expected value: <%s>",
                                OptionUnsafe.getUnsafe(actual),
                                expected));
         }
         return this;
+    }
+
+    @NonNull
+    private static <T> Func1<T, Boolean> equalsPredicate(@NonNull final T expected) {
+        return v -> v.equals(expected);
     }
 
     private static <T> boolean matches(@NonNull final Option<T> actual,
