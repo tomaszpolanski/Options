@@ -84,12 +84,12 @@ public class OptionAssertionTest {
     public void assertValue_throwsAssertionError_whenNotEqualTo() {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(
-                startsWith("Option value: <value> did not equal expected value: <different>"));
+                startsWith("Option value: <actual> did not equal expected value: <expected>"));
 
-        String actual = "value";
+        String actual = "actual";
 
         new OptionAssertion<>(Option.ofObj(actual))
-                .assertValue("different");
+                .assertValue("expected");
     }
 
     @Test
