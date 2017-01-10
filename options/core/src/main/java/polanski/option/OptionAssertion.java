@@ -11,21 +11,21 @@ public final class OptionAssertion<T> {
     private final Option<T> actual;
 
     OptionAssertion(@NonNull final Option<T> actual) {
-        checkNotNull(actual, "Option value cannot be null");
+        checkNotNull(actual, "Option cannot be null");
 
         this.actual = actual;
     }
 
     public void assertIsNone() {
         if (!actual.isNone()) {
-            fail("Option was not None");
+            throw fail("Option was not None");
         }
     }
 
     @NonNull
     public OptionAssertion<T> assertIsSome() {
         if (!actual.isSome()) {
-            fail("Option was not Some");
+            throw fail("Option was not Some");
         }
         return this;
     }
@@ -35,11 +35,11 @@ public final class OptionAssertion<T> {
         checkNotNull(predicate, "Predicate function cannot be null");
 
         if (!actual.isSome()) {
-            fail("Option was not Some");
+            throw fail("Option was not Some");
         }
 
         if (!matches(actual, predicate)) {
-            fail("Option value did not match predicate");
+            throw fail(String.format("Actual Option value: <%s> did not match predicate", actual));
         }
         return this;
     }
@@ -49,13 +49,13 @@ public final class OptionAssertion<T> {
         checkNotNull(expected, "Expected value cannot be null: use assertNone instead");
 
         if (!actual.isSome()) {
-            fail("Option was not Some");
+            throw fail("Option was not Some");
         }
 
         if (!matches(actual, equalsPredicate(expected))) {
-            fail(String.format("Option value: <%s> did not equal expected value: <%s>",
-                               OptionUnsafe.getUnsafe(actual),
-                               expected));
+            throw fail(String.format("Actual Option value: <%s> did not equal expected value: <%s>",
+                                     OptionUnsafe.getUnsafe(actual),
+                                     expected));
         }
         return this;
     }
@@ -70,20 +70,22 @@ public final class OptionAssertion<T> {
         return actual.filter(predicate).isSome();
     }
 
-    private void fail(String message) {
+    @NonNull
+    private AssertionError fail(@Nullable final String message) {
         StringBuilder b = new StringBuilder();
         b.append(message);
 
         b.append(" (")
-         .append("actual = ").append(actual.toString())
+         .append("Actual = ").append(actual.toString())
          .append(')');
 
-        throw new AssertionError(b.toString());
+        return new AssertionError(b.toString());
     }
 
-    private static <T> void checkNotNull(@Nullable T value, @NonNull String msg) {
+    private static <T> void checkNotNull(@Nullable final T value,
+                                         @NonNull final String msg) {
         if (value == null) {
-            throw new AssertionError(msg);
+            throw new IllegalArgumentException(msg);
         }
     }
 }

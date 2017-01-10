@@ -54,7 +54,7 @@ public class OptionAssertionTest {
     @Test
     public void assertValue_throwsAssertionError_whenPredicateFalse() {
         thrown.expect(AssertionError.class);
-        thrown.expectMessage(startsWith("Option value did not match predicate"));
+        thrown.expectMessage(startsWith("Actual Option value: <value> did not match predicate"));
 
         String actual = "value";
         new OptionAssertion<>(Option.ofObj(actual))
@@ -84,7 +84,8 @@ public class OptionAssertionTest {
     public void assertValue_throwsAssertionError_whenNotEqualTo() {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(
-                startsWith("Option value: <actual> did not equal expected value: <expected>"));
+                startsWith(
+                        "Actual Option value: <actual> did not equal expected value: <expected>"));
 
         String actual = "actual";
 
@@ -99,6 +100,37 @@ public class OptionAssertionTest {
 
         new OptionAssertion<>(Option.none())
                 .assertValue("expected");
+    }
+
+    // Preconditions
+
+    @Test
+    public void constructor_prohibitNull() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(startsWith("Option cannot be null"));
+
+        //noinspection ConstantConditions
+        new OptionAssertion<>(null);
+    }
+
+    @Test
+    public void assertValue_prohibitsNullValue() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(startsWith("Expected value cannot be null: use assertNone instead"));
+
+        //noinspection ConstantConditions
+        new OptionAssertion<>(Option.none())
+                .assertValue((Object) null);
+    }
+
+    @Test
+    public void assertValue_prohibitsNullPredicateFunction() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(startsWith("Predicate function cannot be null"));
+
+        //noinspection ConstantConditions
+        new OptionAssertion<>(Option.none())
+                .assertValue(null);
     }
 
 }
