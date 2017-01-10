@@ -1,7 +1,7 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -23,10 +23,10 @@ import static polanski.option.Unit.from;
  */
 public final class Some<T> extends Option<T> {
 
-    @NonNull
+    @NotNull
     private final T mValue;
 
-    Some(@NonNull final T value) {
+    Some(@NotNull final T value) {
         mValue = value;
     }
 
@@ -41,70 +41,70 @@ public final class Some<T> extends Option<T> {
     }
 
     @Override
-    public Option<T> ifSome(@NonNull final Action1<T> action) {
+    public Option<T> ifSome(@NotNull final Action1<T> action) {
         action.call(mValue);
         return this;
     }
 
     @Override
-    public Option<T> ifNone(@NonNull final Action0 action) {
+    public Option<T> ifNone(@NotNull final Action0 action) {
         // Do nothing
         return this;
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> Option<OUT> map(@NonNull final Func1<T, OUT> f) {
+    public <OUT> Option<OUT> map(@NotNull final Func1<T, OUT> f) {
         return ofObj(f.call(mValue));
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> Option<OUT> flatMap(@NonNull final Func1<T, Option<OUT>> f) {
+    public <OUT> Option<OUT> flatMap(@NotNull final Func1<T, Option<OUT>> f) {
         return f.call(mValue);
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public Option<T> filter(@NonNull final Func1<T, Boolean> predicate) {
+    public Option<T> filter(@NotNull final Func1<T, Boolean> predicate) {
         return predicate.call(mValue) ? this : Option.<T>none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public Option<T> orOption(@NonNull final Func0<Option<T>> f) {
+    public Option<T> orOption(@NotNull final Func0<Option<T>> f) {
         return this;
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public T orDefault(@NonNull final Func0<T> def) {
+    public T orDefault(@NotNull final Func0<T> def) {
         return mValue;
     }
 
-    @NonNull
+    @NotNull
     @Override
     T getUnsafe() {
         return mValue;
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> Option<OUT> ofType(@NonNull final Class<OUT> type) {
+    public <OUT> Option<OUT> ofType(@NotNull final Class<OUT> type) {
         return type.isInstance(mValue) ? ofObj(type.cast(mValue)) : Option.<OUT>none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> OUT match(@NonNull final Func1<T, OUT> fSome,
-                           @NonNull final Func0<OUT> fNone) {
+    public <OUT> OUT match(@NotNull final Func1<T, OUT> fSome,
+                           @NotNull final Func0<OUT> fNone) {
         return fSome.call(mValue);
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public polanski.option.Unit matchAction(@NonNull final Action1<T> fSome,
-                                            @NonNull final Action0 fNone) {
+    public polanski.option.Unit matchAction(@NotNull final Action1<T> fSome,
+                                            @NotNull final Action0 fNone) {
         return from(new Action0() {
             @Override
             public void call() {
@@ -115,14 +115,14 @@ public final class Some<T> extends Option<T> {
 
     @Nullable
     @Override
-    public <OUT> OUT matchUnsafe(@NonNull Func1<T, OUT> fSome, @NonNull Func0<OUT> fNone) {
+    public <OUT> OUT matchUnsafe(@NotNull Func1<T, OUT> fSome, @NotNull Func0<OUT> fNone) {
         return fSome.call(mValue);
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN, OUT2> Option<OUT2> lift(@NonNull final Option<IN> option,
-                                        @NonNull final Func2<T, IN, OUT2> f) {
+    public <IN, OUT2> Option<OUT2> lift(@NotNull final Option<IN> option,
+                                        @NotNull final Func2<T, IN, OUT2> f) {
         return option.map(new Func1<IN, OUT2>() {
             @Override
             public OUT2 call(final IN b) {
@@ -131,11 +131,11 @@ public final class Some<T> extends Option<T> {
         });
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN1, IN2, OUT> Option<OUT> lift(@NonNull final Option<IN1> option1,
-                                            @NonNull final Option<IN2> option2,
-                                            @NonNull final Func3<T, IN1, IN2, OUT> f) {
+    public <IN1, IN2, OUT> Option<OUT> lift(@NotNull final Option<IN1> option1,
+                                            @NotNull final Option<IN2> option2,
+                                            @NotNull final Func3<T, IN1, IN2, OUT> f) {
         return option1.lift(option2, new Func2<IN1, IN2, OUT>() {
             @Override
             public OUT call(final IN1 o1, final IN2 o2) {
@@ -144,12 +144,12 @@ public final class Some<T> extends Option<T> {
         });
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN1, IN2, IN3, OUT> Option<OUT> lift(@NonNull final Option<IN1> option1,
-                                                 @NonNull final Option<IN2> option2,
-                                                 @NonNull final Option<IN3> option3,
-                                                 @NonNull final Func4<T, IN1, IN2, IN3, OUT> f) {
+    public <IN1, IN2, IN3, OUT> Option<OUT> lift(@NotNull final Option<IN1> option1,
+                                                 @NotNull final Option<IN2> option2,
+                                                 @NotNull final Option<IN3> option3,
+                                                 @NotNull final Func4<T, IN1, IN2, IN3, OUT> f) {
         return option1.lift(option2, option3, new Func3<IN1, IN2, IN3, OUT>() {
             @Override
             public OUT call(final IN1 o1, final IN2 o2, final IN3 o3) {
@@ -158,10 +158,10 @@ public final class Some<T> extends Option<T> {
         });
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN, OUT> Option<OUT> lift(@NonNull final List<Option<IN>> options,
-                                      @NonNull final FuncN<OUT> f) {
+    public <IN, OUT> Option<OUT> lift(@NotNull final List<Option<IN>> options,
+                                      @NotNull final FuncN<OUT> f) {
 
         return options.size() == 1
                 ? first(options).map(new Func1<IN, OUT>() {
@@ -171,25 +171,25 @@ public final class Some<T> extends Option<T> {
             }
         })
                 : first(options).lift(tail(options), new FuncN<OUT>() {
-                    @Override
-                    public OUT call(final Object... list) {
-                        return f.call(combine(mValue, list));
-                    }
-                });
+            @Override
+            public OUT call(final Object... list) {
+                return f.call(combine(mValue, list));
+            }
+        });
     }
 
-    @NonNull
-    private static <T> T first(@NonNull final List<T> options) {
+    @NotNull
+    private static <T> T first(@NotNull final List<T> options) {
         return options.get(0);
     }
 
-    @NonNull
-    private static <T> List<T> tail(@NonNull final List<T> options) {
+    @NotNull
+    private static <T> List<T> tail(@NotNull final List<T> options) {
         return options.subList(1, options.size());
     }
 
-    @NonNull
-    private static Object[] combine(@NonNull final Object[] a, @NonNull final Object[] b) {
+    @NotNull
+    private static Object[] combine(@NotNull final Object[] a, @NotNull final Object[] b) {
         final int length = a.length + b.length;
         Object[] result = new Object[length];
         System.arraycopy(a, 0, result, 0, a.length);
@@ -197,8 +197,8 @@ public final class Some<T> extends Option<T> {
         return result;
     }
 
-    @NonNull
-    private static Object[] combine(@NonNull final Object a, @NonNull final Object[] b) {
+    @NotNull
+    private static Object[] combine(@NotNull final Object a, @NotNull final Object[] b) {
         return combine(new Object[]{a}, b);
     }
 
@@ -211,13 +211,13 @@ public final class Some<T> extends Option<T> {
     @Override
     public boolean equals(final Object o) {
         return ofObj(o)
-                       .ofType(Some.class)
-                       .filter(new Func1<Some, Boolean>() {
-                           @Override
-                           public Boolean call(final Some some) {
-                               return some.getUnsafe().equals(mValue);
-                           }
-                       }) != NONE;
+                .ofType(Some.class)
+                .filter(new Func1<Some, Boolean>() {
+                    @Override
+                    public Boolean call(final Some some) {
+                        return some.getUnsafe().equals(mValue);
+                    }
+                }) != NONE;
     }
 
     @Override

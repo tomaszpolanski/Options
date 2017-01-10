@@ -1,7 +1,7 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -36,7 +36,7 @@ public final class AtomicOption<T> extends AtomicReference<Option<T>> {
      *
      * @return the previous value
      */
-    @NonNull
+    @NotNull
     public Option<T> getAndClear() {
         return getAndSet(Option.<T>none());
     }

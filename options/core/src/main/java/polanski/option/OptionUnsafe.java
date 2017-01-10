@@ -1,6 +1,6 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Helper class allowing unsafe operations on Option
@@ -13,21 +13,21 @@ public final class OptionUnsafe {
 
     /**
      * ATTENTION: Only use it when you know what you are doing!
-     *
+     * <p>
      * Returns inner value of option if it is Some, otherwise will throw uncatchable exception
      *
      * @param option Option that will be unwrapped
      * @param <T>    Wrapped type
      * @return Value of Some orResult if None, throws exception
      */
-    @NonNull
-    public static <T> T getUnsafe(@NonNull final Option<T> option) {
+    @NotNull
+    public static <T> T getUnsafe(@NotNull final Option<T> option) {
         return option.getUnsafe();
     }
 
     /**
      * ATTENTION: Only use it when you know what you are doing!
-     *
+     * <p>
      * Returns inner value of option if it is Some, otherwise will throw give RuntimeException
      *
      * @param option    Option that will be unwrapped
@@ -35,9 +35,9 @@ public final class OptionUnsafe {
      * @param <T>       Wrapped type
      * @return Value of Some orResult if None, throws exception
      */
-    @NonNull
-    public static <T> T orThrowUnsafe(@NonNull final Option<T> option,
-                                      @NonNull final RuntimeException exception) {
+    @NotNull
+    public static <T> T orThrowUnsafe(@NotNull final Option<T> option,
+                                      @NotNull final RuntimeException exception) {
         if (option.isSome()) {
             return option.getUnsafe();
         } else {
