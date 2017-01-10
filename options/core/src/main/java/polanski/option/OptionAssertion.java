@@ -7,6 +7,9 @@ import java.util.Objects;
 
 import polanski.option.function.Func1;
 
+/**
+ * Assertions to test the nature of a wrapped {@link Option}.
+ */
 public final class OptionAssertion<T> {
 
     @NonNull
@@ -18,12 +21,20 @@ public final class OptionAssertion<T> {
         this.actual = actual;
     }
 
+    /**
+     * Asserts that the {@link Option} is {@link Option#NONE}.
+     */
     public void assertIsNone() {
         if (!actual.isNone()) {
             throw fail("Option was not None");
         }
     }
 
+    /**
+     * Asserts that the {@link Option} is {@link Some}.
+     *
+     * @return this.
+     */
     @NonNull
     public OptionAssertion<T> assertIsSome() {
         if (!actual.isSome()) {
@@ -32,20 +43,13 @@ public final class OptionAssertion<T> {
         return this;
     }
 
-    @NonNull
-    public OptionAssertion<T> assertValue(@NonNull final Func1<T, Boolean> predicate) {
-        checkNotNull(predicate, "Predicate function cannot be null");
-
-        if (!actual.isSome()) {
-            throw fail("Option was not Some");
-        }
-
-        if (!matches(actual, predicate)) {
-            throw fail(String.format("Actual Option value: <%s> did not match predicate", actual));
-        }
-        return this;
-    }
-
+    /**
+     * Asserts that the {@link Option} is {@link Some} and that the wrapped value is equal to the
+     * given value. Equality is determined using {@link Objects#equals(Object, Object)}.
+     *
+     * @param expected The expected value. May not be null.
+     * @return this.
+     */
     @NonNull
     public OptionAssertion<T> assertValue(@NonNull final T expected) {
         checkNotNull(expected, "Expected value cannot be null: use assertNone instead");
@@ -58,6 +62,27 @@ public final class OptionAssertion<T> {
             throw fail(String.format("Actual Option value: <%s> did not equal expected value: <%s>",
                                      OptionUnsafe.getUnsafe(actual),
                                      expected));
+        }
+        return this;
+    }
+
+    /**
+     * Asserts that the {@link Option} is {@link Some} and that the wrapped value matches given
+     * predicate function.
+     *
+     * @param predicate The predicate function. May not be null.
+     * @return this.
+     */
+    @NonNull
+    public OptionAssertion<T> assertValue(@NonNull final Func1<T, Boolean> predicate) {
+        checkNotNull(predicate, "Predicate function cannot be null");
+
+        if (!actual.isSome()) {
+            throw fail("Option was not Some");
+        }
+
+        if (!matches(actual, predicate)) {
+            throw fail(String.format("Actual Option value: <%s> did not match predicate", actual));
         }
         return this;
     }
