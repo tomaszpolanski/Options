@@ -11,8 +11,7 @@ android:
 
 script:
    - cd options
-   - ./gradlew check
-   - ./gradlew codeCoverageReport
+   - ./gradlew build check
    
 after_success:
   - bash <(curl -s https://codecov.io/bash)
