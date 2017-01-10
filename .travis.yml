@@ -8,7 +8,9 @@ android:
     - android-23
 
 script:
-   - ./options/gradlew check
+   - cd options
+   - ls
+   - ./gradlew check
    
 after_success:
   - bash <(curl -s https://codecov.io/bash)
