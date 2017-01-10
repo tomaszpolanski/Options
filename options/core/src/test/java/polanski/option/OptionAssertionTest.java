@@ -4,6 +4,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import polanski.option.function.Func1;
+
 import static org.hamcrest.CoreMatchers.startsWith;
 
 public class OptionAssertionTest {
@@ -45,10 +47,14 @@ public class OptionAssertionTest {
 
     @Test
     public void assertValue_doesNotThrowAssertionError_whenPredicateTrue() {
-        String actual = "value";
-        String expected = "value";
-        new OptionAssertion<>(Option.ofObj(actual))
-                .assertValue(actualValue -> actualValue.equals(expected));
+        final String expected = "value";
+        new OptionAssertion<>(Option.ofObj("value"))
+                .assertValue(new Func1<String, Boolean>() {
+                    @Override
+                    public Boolean call(final String actualValue) {
+                        return actualValue.equals(expected);
+                    }
+                });
     }
 
     @Test
@@ -56,9 +62,13 @@ public class OptionAssertionTest {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(startsWith("Actual Option value: <value> did not match predicate"));
 
-        String actual = "value";
-        new OptionAssertion<>(Option.ofObj(actual))
-                .assertValue(value -> value.equals("different"));
+        new OptionAssertion<>(Option.ofObj("value"))
+                .assertValue(new Func1<String, Boolean>() {
+                    @Override
+                    public Boolean call(final String actualValue) {
+                        return actualValue.equals("different");
+                    }
+                });
     }
 
     @Test
@@ -67,7 +77,12 @@ public class OptionAssertionTest {
         thrown.expectMessage(startsWith("Option was not Some"));
 
         new OptionAssertion<>(Option.none())
-                .assertValue(actual -> actual.equals("expected"));
+                .assertValue(new Func1<Object, Boolean>() {
+                    @Override
+                    public Boolean call(final Object actualValue) {
+                        return actualValue.equals("expected");
+                    }
+                });
     }
 
     // assertValue (equals)

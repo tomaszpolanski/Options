@@ -3,6 +3,8 @@ package polanski.option;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.Objects;
+
 import polanski.option.function.Func1;
 
 public final class OptionAssertion<T> {
@@ -62,7 +64,12 @@ public final class OptionAssertion<T> {
 
     @NonNull
     private static <T> Func1<T, Boolean> equalsPredicate(@NonNull final T expected) {
-        return v -> v.equals(expected);
+        return new Func1<T, Boolean>() {
+            @Override
+            public Boolean call(final T t) {
+                return Objects.equals(t, expected);
+            }
+        };
     }
 
     private static <T> boolean matches(@NonNull final Option<T> actual,
