@@ -2,7 +2,7 @@ allprojects {
     repositories {
         jcenter()
     }
-    project.ext {
+    ext {
         JAVA_SOURCE_COMPATIBILITY = 1.6
         JAVA_TARGET_COMPATIBILITY = 1.6
     }
