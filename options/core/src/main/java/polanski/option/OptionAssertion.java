@@ -11,7 +11,7 @@ public final class OptionAssertion<T> {
     private final Option<T> actual;
 
     OptionAssertion(@NonNull final Option<T> actual) {
-        checkNotNull(actual);
+        checkNotNull(actual, "Option value cannot be null");
 
         this.actual = actual;
     }
@@ -32,7 +32,7 @@ public final class OptionAssertion<T> {
 
     @NonNull
     public OptionAssertion<T> assertValue(@NonNull final Func1<T, Boolean> predicate) {
-        checkNotNull(predicate);
+        checkNotNull(predicate, "Predicate function cannot be null");
 
         if (!actual.isSome()) {
             fail("Option was not Some");
@@ -46,7 +46,7 @@ public final class OptionAssertion<T> {
 
     @NonNull
     public OptionAssertion<T> assertValue(@NonNull final T expected) {
-        checkNotNull(expected);
+        checkNotNull(expected, "Expected value cannot be null: use assertNone instead");
 
         if (!actual.isSome()) {
             fail("Option was not Some");
@@ -81,9 +81,9 @@ public final class OptionAssertion<T> {
         throw new AssertionError(b.toString());
     }
 
-    private static <T> void checkNotNull(@Nullable T value) {
+    private static <T> void checkNotNull(@Nullable T value, @NonNull String msg) {
         if (value == null) {
-            throw new AssertionError("Value cannot be null");
+            throw new AssertionError(msg);
         }
     }
 }
