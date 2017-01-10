@@ -81,7 +81,6 @@ String result = Option.ofObj(input)
 ```
 
 ###How to use them?
-[![](https://jitpack.io/v/tomaszpolanski/options.svg)](https://jitpack.io/#tomaszpolanski/options)
 
 Options are available on maven via [jitpack](https://jitpack.io/#tomaszpolanski/options/). Just add to your gradle files:
 
@@ -97,7 +96,7 @@ To your module level gradle.build add dependency:
 ``` Groovy
 dependencies {
     // other dependencies
-    compile 'com.github.tomaszpolanski:options:1.2.1'
+    compile 'com.github.tomaszpolanski:options:1.2.0'
 }
 ```
 
