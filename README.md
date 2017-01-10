@@ -1,6 +1,7 @@
 
 # Options 
 [![Build Status](https://travis-ci.org/tomaszpolanski/Options.svg?branch=master)](https://travis-ci.org/tomaszpolanski/Options)
+[![codecov.io](http://codecov.io/github/tomaszpolanski/Options/coverage.svg?branch=master)](http://codecov.io/github/tomaszpolanski/Options?branch=master)
 [![Method count](https://img.shields.io/badge/Methods and size-core: 118 | deps: 20 | 16 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.tomaszpolanski%3Aoptions%3A1.2.0)
 
 [Functional Option](https://en.wikipedia.org/wiki/Option_type) that can be used with Java 1.7 and Android.

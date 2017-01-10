@@ -6,9 +6,12 @@ android:
     - platform-tools
     - build-tools-23.0.1
     - android-23
+    - extra-android-m2repository
+    - extra-google-m2repository
 
 script:
-   - ./options/gradlew build
+   - cd options
+   - ./gradlew build check
    
 after_success:
   - bash <(curl -s https://codecov.io/bash)
