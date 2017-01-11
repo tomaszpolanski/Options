@@ -306,7 +306,7 @@ public abstract class Option<T> {
      *
      * @return the new {@link OptionAssertion} instance.
      */
-    @NonNull
+    @NotNull
     public OptionAssertion<T> test() {
         return new OptionAssertion<>(this);
     }
