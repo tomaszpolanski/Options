@@ -170,12 +170,13 @@ public final class Some<T> extends Option<T> {
                 return f.call(it, mValue);
             }
         })
-                : first(options).lift(tail(options), new FuncN<OUT>() {
-            @Override
-            public OUT call(final Object... list) {
-                return f.call(combine(mValue, list));
-            }
-        });
+                : first(options).lift(tail(options),
+                new FuncN<OUT>() {
+                    @Override
+                    public OUT call(final Object... list) {
+                        return f.call(combine(mValue, list));
+                    }
+                });
     }
 
     @NotNull

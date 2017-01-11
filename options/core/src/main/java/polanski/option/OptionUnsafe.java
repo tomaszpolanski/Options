@@ -13,7 +13,7 @@ public final class OptionUnsafe {
 
     /**
      * ATTENTION: Only use it when you know what you are doing!
-     * <p>
+     *
      * Returns inner value of option if it is Some, otherwise will throw uncatchable exception
      *
      * @param option Option that will be unwrapped
@@ -27,7 +27,7 @@ public final class OptionUnsafe {
 
     /**
      * ATTENTION: Only use it when you know what you are doing!
-     * <p>
+     *
      * Returns inner value of option if it is Some, otherwise will throw give RuntimeException
      *
      * @param option    Option that will be unwrapped
