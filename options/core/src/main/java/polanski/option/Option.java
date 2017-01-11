@@ -301,5 +301,15 @@ public abstract class Option<T> {
         return this;
     }
 
+    /**
+     * Creates a {@link OptionAssertion} from this Option to provide set of assertions for testing.
+     *
+     * @return the new {@link OptionAssertion} instance.
+     */
+    @NonNull
+    public OptionAssertion<T> test() {
+        return new OptionAssertion<>(this);
+    }
+
 }
 
