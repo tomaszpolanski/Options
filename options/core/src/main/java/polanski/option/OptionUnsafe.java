@@ -7,6 +7,10 @@ import android.support.annotation.NonNull;
  */
 public final class OptionUnsafe {
 
+    OptionUnsafe() {
+        throw new AssertionError("Must not create an instance");
+    }
+
     /**
      * ATTENTION: Only use it when you know what you are doing!
      *
