@@ -542,6 +542,13 @@ class TestOption {
         assertEquals(value, ofObj(value).unsafe)
     }
 
+    @Test
+    fun testTestOperator_returnsOptionAssertionForGivenOption() {
+        val value = 1
+
+        ofObj(value).test().assertValue(value)
+    }
+
     internal interface IFunction {
 
         fun `fun`()
