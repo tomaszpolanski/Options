@@ -549,6 +549,13 @@ class TestOption {
         ofObj(value).test().assertValue(value)
     }
 
+    @Test
+    fun testEquality() {
+        val value = ofObj(1)
+
+        assertThat(value).isNotEqualTo(ofObj(2))
+    }
+
     internal interface IFunction {
 
         fun `fun`()
