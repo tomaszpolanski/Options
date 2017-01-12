@@ -308,7 +308,7 @@ public abstract class Option<T> {
      */
     @NotNull
     public OptionAssertion<T> test() {
-        return new OptionAssertion<>(this);
+        return new OptionAssertion<T>(this);
     }
 
 }
