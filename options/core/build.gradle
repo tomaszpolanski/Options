@@ -37,8 +37,7 @@ sourceSets {
 
 afterEvaluate {
     sourceSets.all { sourceSet ->
-        if (!sourceSet.name.startsWith("test"))
-        {
+        if (!sourceSet.name.startsWith("test")) {
             sourceSet.kotlin.setSrcDirs([])
         }
     }
@@ -46,8 +45,8 @@ afterEvaluate {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-annotations:23.4.0'
     compile project(':functions')
+    compile 'org.jetbrains:annotations:13.0'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:1.0.1-2"

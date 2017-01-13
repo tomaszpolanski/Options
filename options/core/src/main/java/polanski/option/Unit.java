@@ -1,7 +1,7 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import polanski.option.function.Action0;
 
@@ -22,8 +22,8 @@ public enum Unit {
      * @param action to be executed
      * @return Unit
      */
-    @NonNull
-    public static Unit from(@NonNull final Action0 action) {
+    @NotNull
+    public static Unit from(@NotNull final Action0 action) {
         action.call();
         return DEFAULT;
     }
@@ -34,7 +34,7 @@ public enum Unit {
      * @param ignored to be ignored
      * @return Unit
      */
-    @NonNull
+    @NotNull
     public static Unit asUnit(@Nullable final Object ignored) {
         return DEFAULT;
     }

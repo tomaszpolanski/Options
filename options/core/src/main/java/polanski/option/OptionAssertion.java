@@ -1,10 +1,9 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 import java.util.Objects;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import polanski.option.function.Func1;
 
 /**
@@ -12,10 +11,10 @@ import polanski.option.function.Func1;
  */
 public final class OptionAssertion<T> {
 
-    @NonNull
+    @NotNull
     private final Option<T> actual;
 
-    OptionAssertion(@NonNull final Option<T> actual) {
+    OptionAssertion(@NotNull final Option<T> actual) {
         checkNotNull(actual, "Option cannot be null");
 
         this.actual = actual;
@@ -35,7 +34,7 @@ public final class OptionAssertion<T> {
      *
      * @return this.
      */
-    @NonNull
+    @NotNull
     public OptionAssertion<T> assertIsSome() {
         if (!actual.isSome()) {
             throw fail("Option was not Some");
@@ -50,8 +49,8 @@ public final class OptionAssertion<T> {
      * @param expected The expected value. May not be null.
      * @return this.
      */
-    @NonNull
-    public OptionAssertion<T> assertValue(@NonNull final T expected) {
+    @NotNull
+    public OptionAssertion<T> assertValue(@NotNull final T expected) {
         checkNotNull(expected, "Expected value cannot be null: use assertNone instead");
 
         if (!actual.isSome()) {
@@ -73,8 +72,8 @@ public final class OptionAssertion<T> {
      * @param predicate The predicate function. May not be null.
      * @return this.
      */
-    @NonNull
-    public OptionAssertion<T> assertValue(@NonNull final Func1<T, Boolean> predicate) {
+    @NotNull
+    public OptionAssertion<T> assertValue(@NotNull final Func1<T, Boolean> predicate) {
         checkNotNull(predicate, "Predicate function cannot be null");
 
         if (!actual.isSome()) {
@@ -87,8 +86,8 @@ public final class OptionAssertion<T> {
         return this;
     }
 
-    @NonNull
-    private static <T> Func1<T, Boolean> equalsPredicate(@NonNull final T expected) {
+    @NotNull
+    private static <T> Func1<T, Boolean> equalsPredicate(@NotNull final T expected) {
         return new Func1<T, Boolean>() {
             @Override
             public Boolean call(final T t) {
@@ -97,12 +96,12 @@ public final class OptionAssertion<T> {
         };
     }
 
-    private static <T> boolean matches(@NonNull final Option<T> actual,
-                                       @NonNull final Func1<T, Boolean> predicate) {
+    private static <T> boolean matches(@NotNull final Option<T> actual,
+                                       @NotNull final Func1<T, Boolean> predicate) {
         return actual.filter(predicate).isSome();
     }
 
-    @NonNull
+    @NotNull
     private AssertionError fail(@Nullable final String message) {
         StringBuilder b = new StringBuilder();
         b.append(message);
@@ -115,7 +114,7 @@ public final class OptionAssertion<T> {
     }
 
     private static <T> void checkNotNull(@Nullable final T value,
-                                         @NonNull final String msg) {
+                                         @NotNull final String msg) {
         if (value == null) {
             throw new IllegalArgumentException(msg);
         }

@@ -1,7 +1,7 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public abstract class Option<T> {
     /**
      * Representation of non existing value
      */
-    @NonNull
+    @NotNull
     public static final None NONE = new None();
 
     /**
@@ -35,7 +35,7 @@ public abstract class Option<T> {
      * @return NONE
      */
     @SuppressWarnings("unchecked")
-    @NonNull
+    @NotNull
     public static <T> Option<T> none() {
         return NONE;
     }
@@ -60,7 +60,7 @@ public abstract class Option<T> {
      * @param action Action that is called on the inner value
      * @return this {@link Option}
      */
-    public abstract Option<T> ifSome(@NonNull final Action1<T> action);
+    public abstract Option<T> ifSome(@NotNull final Action1<T> action);
 
     /**
      * Runs the action on Option value if does not exist, otherwise does nothing
@@ -68,7 +68,7 @@ public abstract class Option<T> {
      * @param action Action that is called
      * @return this {@link Option}
      */
-    public abstract Option<T> ifNone(@NonNull final Action0 action);
+    public abstract Option<T> ifNone(@NotNull final Action0 action);
 
     /**
      * Converts inner value with @selector if value exists, otherwise does nothing
@@ -77,8 +77,8 @@ public abstract class Option<T> {
      * @param <OUT>    Result type
      * @return If value exists, returns converted value otherwise does nothing
      */
-    @NonNull
-    public abstract <OUT> Option<OUT> map(@NonNull final Func1<T, OUT> selector);
+    @NotNull
+    public abstract <OUT> Option<OUT> map(@NotNull final Func1<T, OUT> selector);
 
     /**
      * Binds option to another option
@@ -87,8 +87,8 @@ public abstract class Option<T> {
      * @param <OUT>    Result type
      * @return Bound option
      */
-    @NonNull
-    public abstract <OUT> Option<OUT> flatMap(@NonNull final Func1<T, Option<OUT>> selector);
+    @NotNull
+    public abstract <OUT> Option<OUT> flatMap(@NotNull final Func1<T, Option<OUT>> selector);
 
     /**
      * Filters options fulfilling given @predicate
@@ -96,8 +96,8 @@ public abstract class Option<T> {
      * @param predicate Function returning true if the parameter should be included
      * @return Some if the value checks the condition, otherwise None
      */
-    @NonNull
-    public abstract Option<T> filter(@NonNull final Func1<T, Boolean> predicate);
+    @NotNull
+    public abstract Option<T> filter(@NotNull final Func1<T, Boolean> predicate);
 
     /**
      * Returns option if current value is None
@@ -105,8 +105,8 @@ public abstract class Option<T> {
      * @param f Function returning new Option
      * @return Option given by the function if current is None, otherwise returns current one
      */
-    @NonNull
-    public abstract Option<T> orOption(@NonNull final Func0<Option<T>> f);
+    @NotNull
+    public abstract Option<T> orOption(@NotNull final Func0<Option<T>> f);
 
     /**
      * Returns current inner value if it exists, otherwise the value supplied by @def
@@ -114,8 +114,8 @@ public abstract class Option<T> {
      * @param def Function that returns default value
      * @return If value exists, then returns it, otherwise the default
      */
-    @NonNull
-    public abstract T orDefault(@NonNull final Func0<T> def);
+    @NotNull
+    public abstract T orDefault(@NotNull final Func0<T> def);
 
     /**
      * Forcefully tries to unwrap the inner value.
@@ -125,7 +125,7 @@ public abstract class Option<T> {
      *
      * @return Value if exists, otherwise throws exception that shouldn't be caught
      */
-    @NonNull
+    @NotNull
     abstract T getUnsafe();
 
     /**
@@ -135,8 +135,8 @@ public abstract class Option<T> {
      * @param <OUT> Type the value should be cast to
      * @return Option of inner value cast to the OUT, if not possible, then None
      */
-    @NonNull
-    public abstract <OUT> Option<OUT> ofType(@NonNull final Class<OUT> type);
+    @NotNull
+    public abstract <OUT> Option<OUT> ofType(@NotNull final Class<OUT> type);
 
     /**
      * Option created from given @value
@@ -146,7 +146,7 @@ public abstract class Option<T> {
      * @return Some of the @value if it is not null, otherwise None
      */
     @SuppressWarnings("unchecked")
-    @NonNull
+    @NotNull
     public static <IN> Option<IN> ofObj(@Nullable final IN value) {
         return value == null ? Option.NONE : new Some(value);
     }
@@ -158,8 +158,8 @@ public abstract class Option<T> {
      * @param <OUT> Result type
      * @return Option of a value returned by @f, if @f threw an exception, then returns None
      */
-    @NonNull
-    public static <OUT> Option<OUT> tryAsOption(@NonNull final Func0<OUT> f) {
+    @NotNull
+    public static <OUT> Option<OUT> tryAsOption(@NotNull final Func0<OUT> f) {
         try {
             return Option.ofObj(f.call());
         } catch (Exception e) {
@@ -175,9 +175,9 @@ public abstract class Option<T> {
      * @param <OUT> Result type
      * @return Value returned by either @fSome of @fNone
      */
-    @NonNull
-    public abstract <OUT> OUT match(@NonNull final Func1<T, OUT> fSome,
-                                    @NonNull final Func0<OUT> fNone);
+    @NotNull
+    public abstract <OUT> OUT match(@NotNull final Func1<T, OUT> fSome,
+                                    @NotNull final Func0<OUT> fNone);
 
     /**
      * Matches current option to Some or None and returns unit
@@ -186,9 +186,9 @@ public abstract class Option<T> {
      * @param fNone Action that will be called if value does not exist
      * @return Unit
      */
-    @NonNull
-    public abstract Unit matchAction(@NonNull final Action1<T> fSome,
-                                     @NonNull final Action0 fNone);
+    @NotNull
+    public abstract Unit matchAction(@NotNull final Action1<T> fSome,
+                                     @NotNull final Action0 fNone);
 
     /**
      * Matches current optional to Some orResult None and returns appropriate value
@@ -199,15 +199,15 @@ public abstract class Option<T> {
      * @return Value returned by either @fSome of @fNone
      */
     @Nullable
-    public abstract <OUT> OUT matchUnsafe(@NonNull final Func1<T, OUT> fSome,
-                                          @NonNull final Func0<OUT> fNone);
+    public abstract <OUT> OUT matchUnsafe(@NotNull final Func1<T, OUT> fSome,
+                                          @NotNull final Func0<OUT> fNone);
 
     /**
      * Identity function
      *
      * @return Current option
      */
-    @NonNull
+    @NotNull
     public Option<T> id() {
         return this;
     }
@@ -221,9 +221,9 @@ public abstract class Option<T> {
      * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
-    @NonNull
-    public abstract <IN1, OUT> Option<OUT> lift(@NonNull final Option<IN1> option1,
-                                                @NonNull final Func2<T, IN1, OUT> f);
+    @NotNull
+    public abstract <IN1, OUT> Option<OUT> lift(@NotNull final Option<IN1> option1,
+                                                @NotNull final Func2<T, IN1, OUT> f);
 
     /**
      * Combines given Options using @f
@@ -236,10 +236,10 @@ public abstract class Option<T> {
      * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
-    @NonNull
-    public abstract <IN1, IN2, OUT> Option<OUT> lift(@NonNull final Option<IN1> option1,
-                                                     @NonNull final Option<IN2> option2,
-                                                     @NonNull final Func3<T, IN1, IN2, OUT> f);
+    @NotNull
+    public abstract <IN1, IN2, OUT> Option<OUT> lift(@NotNull final Option<IN1> option1,
+                                                     @NotNull final Option<IN2> option2,
+                                                     @NotNull final Func3<T, IN1, IN2, OUT> f);
 
     /**
      * Combines given Options using @f
@@ -254,11 +254,11 @@ public abstract class Option<T> {
      * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
-    @NonNull
-    public abstract <IN1, IN2, IN3, OUT> Option<OUT> lift(@NonNull final Option<IN1> option1,
-                                                          @NonNull final Option<IN2> option2,
-                                                          @NonNull final Option<IN3> option3,
-                                                          @NonNull final Func4<T, IN1, IN2, IN3, OUT> f);
+    @NotNull
+    public abstract <IN1, IN2, IN3, OUT> Option<OUT> lift(@NotNull final Option<IN1> option1,
+                                                          @NotNull final Option<IN2> option2,
+                                                          @NotNull final Option<IN3> option3,
+                                                          @NotNull final Func4<T, IN1, IN2, IN3, OUT> f);
 
     /**
      * Combines given Options using @f.
@@ -269,10 +269,10 @@ public abstract class Option<T> {
      * @param <OUT>   Result type
      * @return Option of some if all the Options were Some, otherwise None
      */
-    @NonNull
+    @NotNull
     public abstract <IN, OUT> Option<OUT> lift(
-            @NonNull final List<Option<IN>> options,
-            @NonNull final FuncN<OUT> f);
+            @NotNull final List<Option<IN>> options,
+            @NotNull final FuncN<OUT> f);
 
     /**
      * Logs the value of the Option via given logging function.
@@ -280,8 +280,8 @@ public abstract class Option<T> {
      * @param logging Logging function
      * @return Unchanged option
      */
-    @NonNull
-    public Option<T> log(@NonNull final Action1<String> logging) {
+    @NotNull
+    public Option<T> log(@NotNull final Action1<String> logging) {
         return log("", logging);
     }
 
@@ -292,12 +292,12 @@ public abstract class Option<T> {
      * @param logging Logging function
      * @return Unchanged option
      */
-    @NonNull
-    public Option<T> log(@NonNull String tag,
-                         @NonNull final Action1<String> logging) {
+    @NotNull
+    public Option<T> log(@NotNull String tag,
+                         @NotNull final Action1<String> logging) {
         logging.call(tag.isEmpty()
-                             ? this.toString()
-                             : String.format("%s: %s", tag, this));
+                ? this.toString()
+                : String.format("%s: %s", tag, this));
         return this;
     }
 
@@ -306,7 +306,7 @@ public abstract class Option<T> {
      *
      * @return the new {@link OptionAssertion} instance.
      */
-    @NonNull
+    @NotNull
     public OptionAssertion<T> test() {
         return new OptionAssertion<>(this);
     }

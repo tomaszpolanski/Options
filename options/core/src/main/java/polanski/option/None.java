@@ -1,7 +1,7 @@
 package polanski.option;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -35,106 +35,106 @@ public final class None<T> extends Option<T> {
     }
 
     @Override
-    public Option<T> ifSome(@NonNull final Action1<T> action) {
+    public Option<T> ifSome(@NotNull final Action1<T> action) {
         // Do nothing
         return this;
     }
 
     @Override
-    public Option<T> ifNone(@NonNull final Action0 action) {
+    public Option<T> ifNone(@NotNull final Action0 action) {
         action.call();
         return this;
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> Option<OUT> map(@NonNull final Func1<T, OUT> f) {
+    public <OUT> Option<OUT> map(@NotNull final Func1<T, OUT> f) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> Option<OUT> flatMap(@NonNull final Func1<T, Option<OUT>> f) {
+    public <OUT> Option<OUT> flatMap(@NotNull final Func1<T, Option<OUT>> f) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public Option<T> filter(@NonNull final Func1<T, Boolean> predicate) {
+    public Option<T> filter(@NotNull final Func1<T, Boolean> predicate) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public Option<T> orOption(@NonNull final Func0<Option<T>> f) {
+    public Option<T> orOption(@NotNull final Func0<Option<T>> f) {
         return f.call();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public T orDefault(@NonNull final Func0<T> def) {
+    public T orDefault(@NotNull final Func0<T> def) {
         return def.call();
     }
 
-    @NonNull
+    @NotNull
     @Override
     T getUnsafe() {
         throw new IllegalStateException();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> Option<OUT> ofType(@NonNull Class<OUT> type) {
+    public <OUT> Option<OUT> ofType(@NotNull Class<OUT> type) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <OUT> OUT match(@NonNull Func1<T, OUT> fSome,
-                           @NonNull Func0<OUT> fNone) {
+    public <OUT> OUT match(@NotNull Func1<T, OUT> fSome,
+                           @NotNull Func0<OUT> fNone) {
         return fNone.call();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public polanski.option.Unit matchAction(@NonNull Action1<T> fSome, @NonNull Action0 fNone) {
+    public polanski.option.Unit matchAction(@NotNull Action1<T> fSome, @NotNull Action0 fNone) {
         return polanski.option.Unit.from(fNone);
     }
 
     @Nullable
     @Override
-    public <OUT> OUT matchUnsafe(@NonNull Func1<T, OUT> fSome, @NonNull Func0<OUT> fNone) {
+    public <OUT> OUT matchUnsafe(@NotNull Func1<T, OUT> fSome, @NotNull Func0<OUT> fNone) {
         return fNone.call();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN, OUT> Option<OUT> lift(@NonNull final Option<IN> optionB,
-                                      @NonNull final Func2<T, IN, OUT> f) {
+    public <IN, OUT> Option<OUT> lift(@NotNull final Option<IN> optionB,
+                                      @NotNull final Func2<T, IN, OUT> f) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN1, IN2, OUT> Option<OUT> lift(@NonNull Option<IN1> option1,
-                                            @NonNull Option<IN2> option2,
-                                            @NonNull Func3<T, IN1, IN2, OUT> f) {
+    public <IN1, IN2, OUT> Option<OUT> lift(@NotNull Option<IN1> option1,
+                                            @NotNull Option<IN2> option2,
+                                            @NotNull Func3<T, IN1, IN2, OUT> f) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN1, IN2, IN3, OUT> Option<OUT> lift(@NonNull Option<IN1> option1,
-                                                 @NonNull Option<IN2> option2,
-                                                 @NonNull Option<IN3> option3,
-                                                 @NonNull Func4<T, IN1, IN2, IN3, OUT> f) {
+    public <IN1, IN2, IN3, OUT> Option<OUT> lift(@NotNull Option<IN1> option1,
+                                                 @NotNull Option<IN2> option2,
+                                                 @NotNull Option<IN3> option3,
+                                                 @NotNull Func4<T, IN1, IN2, IN3, OUT> f) {
         return none();
     }
 
-    @NonNull
+    @NotNull
     @Override
-    public <IN, OUT> Option<OUT> lift(@NonNull final List<Option<IN>> options,
-                                      @NonNull final FuncN<OUT> f) {
+    public <IN, OUT> Option<OUT> lift(@NotNull final List<Option<IN>> options,
+                                      @NotNull final FuncN<OUT> f) {
         return none();
     }
 
