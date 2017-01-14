@@ -4,11 +4,11 @@
 [![codecov.io](http://codecov.io/github/tomaszpolanski/Options/coverage.svg?branch=master)](http://codecov.io/github/tomaszpolanski/Options?branch=master)
 [![Method count](https://img.shields.io/badge/Methods and size-core: 118 | deps: 20 | 16 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.tomaszpolanski%3Aoptions%3A1.2.0)
 
-[Functional Option](https://en.wikipedia.org/wiki/Option_type) that can be used with Java 1.7 and Android.
+[Functional Option](https://en.wikipedia.org/wiki/Option_type) that can be used with Java 1.6 and Android.
 
 ##Option
 
-Similar to [Java 8 ``Optional``](http://www.oracle.com/technetwork/articles/java/java8-optional-2175753.html) but mainly targeting Android and Java 7 here. 
+Similar to [Java 8 ``Optional``](http://www.oracle.com/technetwork/articles/java/java8-optional-2175753.html) but targeting Android and Java 6. 
 
 ###Why to use them?
 
@@ -81,7 +81,7 @@ String result = Option.ofObj(input)
                       .orDefault(() -> "Input is not a number");
 ```
 
-###How to use them?
+###How to include in your project?
 [![](https://jitpack.io/v/tomaszpolanski/options.svg)](https://jitpack.io/#tomaszpolanski/options)
 
 Options are available on maven via [jitpack](https://jitpack.io/#tomaszpolanski/options/). Just add to your gradle files:
