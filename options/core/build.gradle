@@ -27,7 +27,7 @@ buildscript {
     }
 }
 
-version = '1.2.4'
+version = '1.2.5'
 sourceCompatibility = project.ext.JAVA_SOURCE_COMPATIBILITY
 targetCompatibility = project.ext.JAVA_TARGET_COMPATIBILITY
 
