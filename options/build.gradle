@@ -5,6 +5,7 @@ allprojects {
     ext {
         JAVA_SOURCE_COMPATIBILITY = 1.6
         JAVA_TARGET_COMPATIBILITY = 1.6
+        KOTLIN_VERSION = '1.0.6'
     }
 }
 

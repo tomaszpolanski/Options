@@ -14,7 +14,6 @@ jacocoTestReport {
 check.dependsOn jacocoTestReport
 
 buildscript {
-    ext.kotlin_version = '1.0.1-2'
     repositories {
         mavenLocal()
         mavenCentral()
@@ -23,11 +22,11 @@ buildscript {
         maven { url "http://repo1.maven.org/maven2/" }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.1-2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.ext.KOTLIN_VERSION"
     }
 }
 
-version = '1.2.5'
+version = '1.3.0'
 sourceCompatibility = project.ext.JAVA_SOURCE_COMPATIBILITY
 targetCompatibility = project.ext.JAVA_TARGET_COMPATIBILITY
 
