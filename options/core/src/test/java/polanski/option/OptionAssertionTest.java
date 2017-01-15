@@ -17,7 +17,7 @@ public class OptionAssertionTest {
 
     @Test
     public void assertIsNone_doesNotThrowAssertionError_whenNone() {
-        new OptionAssertion<>(Option.none()).assertIsNone();
+        new OptionAssertion<Object>(Option.none()).assertIsNone();
     }
 
     @Test
@@ -25,14 +25,14 @@ public class OptionAssertionTest {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(startsWith("Option was not None"));
 
-        new OptionAssertion<>(Option.ofObj("value")).assertIsNone();
+        new OptionAssertion<String>(Option.ofObj("value")).assertIsNone();
     }
 
     // assertIsSome
 
     @Test
     public void assertIsSome_doesNotThrowAssertionError_whenSome() {
-        new OptionAssertion<>(Option.ofObj("value")).assertIsSome();
+        new OptionAssertion<String>(Option.ofObj("value")).assertIsSome();
     }
 
     @Test
@@ -40,7 +40,7 @@ public class OptionAssertionTest {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(startsWith("Option was not Some"));
 
-        new OptionAssertion<>(Option.none()).assertIsSome();
+        new OptionAssertion<Object>(Option.none()).assertIsSome();
     }
 
     // assertValue (predicate)
@@ -48,7 +48,7 @@ public class OptionAssertionTest {
     @Test
     public void assertValue_doesNotThrowAssertionError_whenPredicateTrue() {
         final String expected = "value";
-        new OptionAssertion<>(Option.ofObj("value"))
+        new OptionAssertion<String>(Option.ofObj("value"))
                 .assertValue(new Func1<String, Boolean>() {
                     @Override
                     public Boolean call(final String actualValue) {
@@ -62,7 +62,7 @@ public class OptionAssertionTest {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(startsWith("Actual Option value: <value> did not match predicate"));
 
-        new OptionAssertion<>(Option.ofObj("value"))
+        new OptionAssertion<String>(Option.ofObj("value"))
                 .assertValue(new Func1<String, Boolean>() {
                     @Override
                     public Boolean call(final String actualValue) {
@@ -76,7 +76,7 @@ public class OptionAssertionTest {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(startsWith("Option was not Some"));
 
-        new OptionAssertion<>(Option.none())
+        new OptionAssertion<Object>(Option.none())
                 .assertValue(new Func1<Object, Boolean>() {
                     @Override
                     public Boolean call(final Object actualValue) {
@@ -91,7 +91,7 @@ public class OptionAssertionTest {
     public void assertValue_doesNotThrowAssertionError_whenEqualTo() {
         String actual = "value";
         String expected = "value";
-        new OptionAssertion<>(Option.ofObj(actual))
+        new OptionAssertion<String>(Option.ofObj(actual))
                 .assertValue(expected);
     }
 
@@ -104,7 +104,7 @@ public class OptionAssertionTest {
 
         String actual = "actual";
 
-        new OptionAssertion<>(Option.ofObj(actual))
+        new OptionAssertion<String>(Option.ofObj(actual))
                 .assertValue("expected");
     }
 
@@ -113,7 +113,7 @@ public class OptionAssertionTest {
         thrown.expect(AssertionError.class);
         thrown.expectMessage(startsWith("Option was not Some"));
 
-        new OptionAssertion<>(Option.none())
+        new OptionAssertion<Object>(Option.none())
                 .assertValue("expected");
     }
 
@@ -125,7 +125,7 @@ public class OptionAssertionTest {
         thrown.expectMessage(startsWith("Option cannot be null"));
 
         //noinspection ConstantConditions
-        new OptionAssertion<>(null);
+        new OptionAssertion<Object>(null);
     }
 
     @Test
@@ -134,7 +134,7 @@ public class OptionAssertionTest {
         thrown.expectMessage(startsWith("Expected value cannot be null: use assertNone instead"));
 
         //noinspection ConstantConditions
-        new OptionAssertion<>(Option.none())
+        new OptionAssertion<Object>(Option.none())
                 .assertValue((Object) null);
     }
 
@@ -144,7 +144,7 @@ public class OptionAssertionTest {
         thrown.expectMessage(startsWith("Predicate function cannot be null"));
 
         //noinspection ConstantConditions
-        new OptionAssertion<>(Option.none())
+        new OptionAssertion<Object>(Option.none())
                 .assertValue(null);
     }
 
