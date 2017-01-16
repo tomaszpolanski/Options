@@ -1,4 +1,1 @@
 apply plugin: 'java'
-
-sourceCompatibility = project.ext.JAVA_SOURCE_COMPATIBILITY
-targetCompatibility = project.ext.JAVA_TARGET_COMPATIBILITY
