@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import polanski.option.function.Action0;
 import polanski.option.function.Action1;
@@ -152,16 +153,16 @@ public abstract class Option<T> {
     }
 
     /**
-     * Option of value returned by the function
+     * Option of value returned by the callable function
      *
-     * @param f     Function that returns a value, that function could throw an exception
+     * @param c     Function that returns a value, that function could throw an exception
      * @param <OUT> Result type
-     * @return Option of a value returned by @f, if @f threw an exception, then returns None
+     * @return Option of a value returned by @c, if @c threw an exception, then returns None
      */
     @NotNull
-    public static <OUT> Option<OUT> tryAsOption(@NotNull final Func0<OUT> f) {
+    public static <OUT> Option<OUT> tryAsOption(@NotNull final Callable<OUT> c) {
         try {
-            return Option.ofObj(f.call());
+            return Option.ofObj(c.call());
         } catch (Exception e) {
             return none();
         }
