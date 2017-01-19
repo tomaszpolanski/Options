@@ -27,8 +27,6 @@ buildscript {
 }
 
 version = '1.3.0'
-sourceCompatibility = project.ext.JAVA_SOURCE_COMPATIBILITY
-targetCompatibility = project.ext.JAVA_TARGET_COMPATIBILITY
 
 sourceSets {
     test.java.srcDirs += 'src/test/kotlin'
