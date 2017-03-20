@@ -5,23 +5,23 @@
 
 [Functional Option](https://en.wikipedia.org/wiki/Option_type) that can be used with Java 1.6 and Android.
 
-##Option
+## Option
 
 Similar to [Java 8 ``Optional``](http://www.oracle.com/technetwork/articles/java/java8-optional-2175753.html) but targeting Android and Java 6. 
 
-###Why to use them?
+### Why to use them?
 
 In 1965,  Sir Tony Hoare introduced ``null`` reference.  Since then he apologised for that and called it [The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare). 
 If the inventor of ``null`` pointers and references has condemned them, why the rest of us should be using them?
 
 
-###Where to use them?
+### Where to use them?
 
 Currently there are several ways to say that an object could be null. Most popular way in Android nowadays is using ``Nullable`` or ``NonNull`` annotations. 
 The problem with those annotations is that you cannot say what kind of objects are in an array, or if you use Rx, in an ``Observable``.
 With ``Options`` you can use instead ```List<Option<String>>``` or in Rx ```Observable<Option<Integer>>```.
 
-###How to use them?
+### How to use them?
 If you have been using RxJava, this API will look really similar to RxJava.
 Still ``Option`` is synchronous API that does not have too much to do with Reactive Programming.
 
@@ -80,7 +80,7 @@ String result = Option.ofObj(input)
                       .orDefault(() -> "Input is not a number");
 ```
 
-###How to include in your project?
+### How to include in your project?
 
 [![](https://jitpack.io/v/tomaszpolanski/options.svg)](https://jitpack.io/#tomaszpolanski/options)
 
@@ -102,6 +102,6 @@ dependencies {
 }
 ```
 
-##References
+## References
 
 This library was strongly influenced by [C# Functional Language Extensions](https://github.com/louthy/language-ext).
