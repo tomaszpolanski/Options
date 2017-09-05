@@ -98,7 +98,7 @@ To your module level gradle.build add dependency:
 ``` Groovy
 dependencies {
     // other dependencies
-    compile 'com.github.tomaszpolanski:options:1.3.0'
+    implementation 'com.github.tomaszpolanski:options:1.3.0'
 }
 ```
 
