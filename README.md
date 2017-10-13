@@ -102,6 +102,9 @@ dependencies {
 }
 ```
 
+### Can I use it with Kotlin?
+Sure, you can, but I would recommend using Peter Tackages' [kotlin-options](https://github.com/peter-tackage/kotlin-options) as they play nicer with Kotlin.
+
 ## References
 
 This library was strongly influenced by [C# Functional Language Extensions](https://github.com/louthy/language-ext).
