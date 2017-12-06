@@ -103,7 +103,7 @@ dependencies {
 ```
 
 ### Can I use it with Kotlin?
-Sure, you can, but I would recommend using Peter Tackages' [kotlin-options](https://github.com/peter-tackage/kotlin-options) as they play nicer with Kotlin.
+Sure, you can, but I would recommend using Peter Tackage's [kotlin-options](https://github.com/peter-tackage/kotlin-options) as they play nicer with Kotlin.
 
 ## References
 
